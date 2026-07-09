@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="ENSAMBLA">
+  <rect width="120" height="120" rx="26" fill="#14120E"/>
+  <g transform="translate(14 14)">
+    <circle cx="24" cy="24" r="10" fill="#FAF9F5"/>
+    <circle cx="60" cy="24" r="10" fill="#FAF9F5"/>
+    <circle cx="24" cy="60" r="10" fill="#FAF9F5"/>
+    <rect x="46" y="46" width="26" height="26" rx="8" fill="#F0A125" transform="rotate(45 60 60)"/>
+  </g>
+</svg>

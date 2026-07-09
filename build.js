@@ -38,11 +38,11 @@ const LOADER = `<div id="loader" role="status" aria-live="polite" aria-label="Ca
 function NAV(active) {
   const cur = (k) => active === k ? ' aria-current="page"' : '';
   return `<header class="nav">
-  <a class="nav__brand" href="/" title="ENSAMBLA — inicio">${LOGO(30)}<span class="nav__name">ENSAMBLA</span></a>
+  <a class="nav__brand" href="index.html" title="ENSAMBLA — inicio">${LOGO(30)}<span class="nav__name">ENSAMBLA<span class="brand-dot">.</span></span></a>
   <nav class="nav__links" aria-label="Principal">
-    <a class="nav__link" href="/#funcionalidades"${cur('funcionalidades')}>Funcionalidades</a>
-    <a class="nav__link" href="/precios"${cur('precios')}>Precios</a>
-    <a class="nav__link" href="/faq"${cur('faq')}>FAQ</a>
+    <a class="nav__link" href="index.html#funcionalidades"${cur('funcionalidades')}>Funcionalidades</a>
+    <a class="nav__link" href="precios.html"${cur('precios')}>Precios</a>
+    <a class="nav__link" href="faq.html"${cur('faq')}>FAQ</a>
     <a class="nav__cta" href="${WA}?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener" title="Agendar demo por WhatsApp">Agendar demo</a>
   </nav>
 </header>`;
@@ -52,14 +52,14 @@ function NAV(active) {
 const FOOTER = `<footer class="footer">
   <div class="footer__grid">
     <div class="footer__brand">
-      <div class="footer__brandrow">${LOGO(28)}<span class="footer__name">ENSAMBLA</span></div>
+      <div class="footer__brandrow">${LOGO(28)}<span class="footer__name">ENSAMBLA<span class="brand-dot">.</span></span></div>
       <p class="footer__tagline">Gestión para equipos de música y alabanza: canciones con acordes, setlists, eventos, disponibilidad, chat y metrónomo integrado.</p>
     </div>
     <div class="footer__col">
       <span class="footer__title">Producto</span>
-      <a class="footer__link" href="/#funcionalidades">Funcionalidades</a>
-      <a class="footer__link" href="/precios">Precios</a>
-      <a class="footer__link" href="/faq">Preguntas frecuentes</a>
+      <a class="footer__link" href="index.html#funcionalidades">Funcionalidades</a>
+      <a class="footer__link" href="precios.html">Precios</a>
+      <a class="footer__link" href="faq.html">Preguntas frecuentes</a>
     </div>
     <div class="footer__col">
       <span class="footer__title">Contacto</span>
@@ -68,8 +68,8 @@ const FOOTER = `<footer class="footer">
     </div>
     <div class="footer__col">
       <span class="footer__title">Legal</span>
-      <a class="footer__link" href="/privacidad">Política de privacidad</a>
-      <a class="footer__link" href="/terminos">Términos y condiciones</a>
+      <a class="footer__link" href="privacidad.html">Política de privacidad</a>
+      <a class="footer__link" href="terminos.html">Términos y condiciones</a>
     </div>
   </div>
   <div class="footer__bottom">
@@ -81,8 +81,8 @@ const FOOTER = `<footer class="footer">
 /* ---- Anuncio ENSAMBLA (bloque de video de la portada) --------------------
    Coloca tu clip en:  assets/video/ensambla-demo.mp4
    preload="metadata" => no descarga el video hasta que le den play (rápido).  */
-const ANUNCIO = `<video controls preload="metadata" playsinline poster="/assets/img/hero-dashboard.webp" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#0D0C0B;" title="ENSAMBLA en acción">
-  <source src="/assets/video/ensambla-demo.mp4" type="video/mp4">
+const ANUNCIO = `<video controls preload="metadata" playsinline poster="assets/img/hero-dashboard.webp" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#0D0C0B;" title="ENSAMBLA en acción">
+  <source src="assets/video/ensambla-demo.mp4" type="video/mp4">
   Tu navegador no reproduce este video. <a href="${WA}?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener">Ver la demo por WhatsApp</a>.
 </video>`;
 
@@ -99,16 +99,16 @@ const PAGES = {
   index:      { file: 'index.html', active: 'home', path: '/',
     title: 'ENSAMBLA — Gestión para equipos de música y alabanza',
     desc: 'Canciones con acordes, setlists, calendario de eventos, disponibilidad, chat y metrónomo integrado. Todo tu equipo de música sincronizado, del ensayo al escenario. 14 días gratis.' },
-  precios:    { file: 'precios.html', active: 'precios', path: '/precios',
+  precios:    { file: 'precios.html', active: 'precios', path: '/precios.html',
     title: 'Precios — ENSAMBLA',
     desc: 'Planes de ENSAMBLA desde $4.99/mes. 14 días de prueba gratis, sin tarjeta. Un plan para cada tamaño de equipo de música y alabanza.' },
-  faq:        { file: 'faq.html', active: 'faq', path: '/faq',
+  faq:        { file: 'faq.html', active: 'faq', path: '/faq.html',
     title: 'Preguntas frecuentes — ENSAMBLA',
     desc: 'Todo sobre ENSAMBLA: plataformas, precios, prueba gratis, organizaciones, metrónomo y modo en vivo. Respuestas claras para tu equipo de música.' },
-  privacidad: { file: 'privacidad.html', active: '', path: '/privacidad',
+  privacidad: { file: 'privacidad.html', active: '', path: '/privacidad.html',
     title: 'Política de privacidad — ENSAMBLA',
     desc: 'Cómo ENSAMBLA recopila, usa y protege tus datos. Política de privacidad de la app de gestión para equipos de música y alabanza.' },
-  terminos:   { file: 'terminos.html', active: '', path: '/terminos',
+  terminos:   { file: 'terminos.html', active: '', path: '/terminos.html',
     title: 'Términos y condiciones — ENSAMBLA',
     desc: 'Términos y condiciones de uso de ENSAMBLA, la app de gestión para equipos de música y alabanza.' },
 };
@@ -129,7 +129,7 @@ function transformImages(html) {
     const load = info.hero
       ? 'loading="eager" fetchpriority="high" decoding="async"'
       : 'loading="lazy" decoding="async"';
-    return `<img src="/assets/img/${info.f}" alt="${info.alt}" title="${info.alt}" width="${info.w}" height="${info.h}" ${load} ${style}>`;
+    return `<img src="assets/img/${info.f}" alt="${info.alt}" title="${info.alt}" width="${info.w}" height="${info.h}" ${load} ${style}>`;
   });
 }
 
@@ -166,10 +166,10 @@ function extractBody(tpl) {
 function fixLinks(html) {
   return html
     .replace(/hola@ensambla\.app/g, EMAIL)   // usa el correo de contacto real
-    .replace(/href="Sitio - Precios\.dc\.html"/g, 'href="/precios"')
-    .replace(/href="Sitio - FAQ\.dc\.html"/g, 'href="/faq"')
-    .replace(/href="Sitio - Privacidad\.dc\.html"/g, 'href="/privacidad"')
-    .replace(/href="Sitio - T[eé]rminos\.dc\.html"/g, 'href="/terminos"');
+    .replace(/href="Sitio - Precios\.dc\.html"/g, 'href="precios.html"')
+    .replace(/href="Sitio - FAQ\.dc\.html"/g, 'href="faq.html"')
+    .replace(/href="Sitio - Privacidad\.dc\.html"/g, 'href="privacidad.html"')
+    .replace(/href="Sitio - T[eé]rminos\.dc\.html"/g, 'href="terminos.html"');
 }
 
 function renameRawTags(html) {
@@ -234,12 +234,12 @@ function head(p, faqItems) {
   <meta name="twitter:description" content="${p.desc}">
   <meta name="twitter:image" content="${OG_IMAGE}">
 
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/favicon.svg">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="manifest" href="site.webmanifest">
 
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-latin.woff2" crossorigin>${p.active === 'home' ? '\n  <link rel="preload" as="image" href="/assets/img/hero-dashboard.webp" fetchpriority="high">' : ''}
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/outfit-latin.woff2" crossorigin>${p.active === 'home' ? '\n  <link rel="preload" as="image" href="assets/img/hero-dashboard.webp" fetchpriority="high">' : ''}
+  <link rel="stylesheet" href="assets/css/styles.css">
 
   ${jsonLd(p.active === 'home' ? 'index' : (p.file === 'faq.html' ? 'faq' : 'other'), faqItems)}
 </head>

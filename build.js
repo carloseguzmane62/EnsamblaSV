@@ -9,6 +9,7 @@
 const fs = require('fs');
 
 /* ---- Config editable ---------------------------------------------------- */
+const VER = 4;                                     // versión de assets (cache-busting)
 const SITE_URL = 'https://ensambla.vercel.app';    // ← cambia cuando tengas dominio propio
 const WA = 'https://wa.me/50374691631';            // WhatsApp +503 7469 1631
 const EMAIL = 'carlose.guzmane62@gmail.com';
@@ -39,7 +40,8 @@ function NAV(active) {
   const cur = (k) => active === k ? ' aria-current="page"' : '';
   return `<header class="nav">
   <a class="nav__brand" href="index.html" title="ENSAMBLA — inicio"><img class="nav__logo-img" src="assets/brand/logo-completo-oscuro.png" alt="ENSAMBLA" width="1573" height="370"></a>
-  <nav class="nav__links" aria-label="Principal">
+  <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
+  <nav class="nav__links" id="nav-menu" aria-label="Principal">
     <a class="nav__link" href="index.html#funcionalidades"${cur('funcionalidades')}>Funcionalidades</a>
     <a class="nav__link" href="precios.html"${cur('precios')}>Precios</a>
     <a class="nav__link" href="faq.html"${cur('faq')}>FAQ</a>
@@ -85,6 +87,57 @@ const ANUNCIO = `<video controls preload="metadata" playsinline poster="assets/i
   <source src="assets/video/ensambla-demo.mp4" type="video/mp4">
   Tu navegador no reproduce este video. <a href="${WA}?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener">Ver la demo por WhatsApp</a>.
 </video>`;
+
+/* ---- Testimonios (rediseño con tarjetas 3D) ------------------------------ */
+const TESTIMONIOS = [
+  { i: 'DR', n: 'Daniel Reyes', r: 'Líder de alabanza · Comunidad Vida Nueva',
+    t: 'Antes perdíamos veinte minutos de cada ensayo viendo quién tenía la última versión del setlist. Con Ensambla eso simplemente desapareció.' },
+  { i: 'ME', n: 'Marta Escobar', r: 'Baterista · Ministerio León de Judá',
+    t: 'El modo en vivo con el metrónomo integrado cambió cómo tocamos. Ya no hay excusas de tempo el domingo en la mañana.' },
+  { i: 'JL', n: 'Daniel Molina', r: 'Coordinador de música · Banda Génesis',
+    t: 'Tenemos tres grupos distintos y cada músico ahora sabe exactamente cuándo y dónde toca. La disponibilidad sola nos ahorra horas.' },
+];
+const TESTIMONIALS_HTML = `<div class="tsection">
+  <div class="tsection__head">
+    <div class="tsection__eyebrow">EQUIPOS QUE YA LO USAN</div>
+    <h2 class="tsection__title">Menos caos, más música.</h2>
+  </div>
+  <div class="tgrid">
+${TESTIMONIOS.map(t => `    <figure class="tcard">
+      <span class="tcard__quote" aria-hidden="true">&ldquo;</span>
+      <div class="tcard__stars" aria-label="5 de 5 estrellas">★★★★★</div>
+      <blockquote class="tcard__text">${t.t}</blockquote>
+      <figcaption class="tcard__author">
+        <span class="tcard__avatar" aria-hidden="true">${t.i}</span>
+        <span class="tcard__who"><span class="tcard__name">${t.n}</span><span class="tcard__role">${t.r}</span></span>
+      </figcaption>
+    </figure>`).join('\n')}
+  </div>
+</div>
+`;
+
+/* ---- Funcionalidades (rediseño: bento grid) ------------------------------ */
+const FEATURES = [
+  { img: 'cancionero-acordes.webp', t: 'Cancionero con acordes', d: 'Letras, acordes y tono ajustable para cada voz e instrumento. Transpón una canción entera con un toque.', span: 'b-wide b-tall' },
+  { img: 'calendario-eventos.webp', t: 'Calendario de eventos y ensayos', d: 'Fechas, lugares y horarios en un solo calendario que todo el equipo ve.', span: 'b-wide' },
+  { img: 'disponibilidad.webp', t: 'Disponibilidad de cada músico', d: 'Cada quien marca cuándo puede; tú armas el equipo sin adivinar.', span: 'b-wide' },
+  { img: 'instrumentos-musicos.webp', t: 'Instrumentos y músicos', d: 'Asigna quién toca qué en cada servicio.', span: 'b-md' },
+  { img: 'chat-equipo.webp', t: 'Chat interno del equipo', d: 'Coordina sin perder mensajes.', span: 'b-md' },
+  { img: 'miembros-roles.webp', t: 'Miembros y multi-organización', d: 'Varios grupos, una sola cuenta.', span: 'b-md' },
+];
+const FUNCIONALIDADES_HTML = `<div id="funcionalidades" style="background: #FAF9F5; padding: clamp(56px,8vw,96px) clamp(20px,5vw,48px);">
+  <div style="text-align: center; max-width: 760px; margin: 0 auto clamp(36px,5vw,52px);">
+    <div style="font-family: 'Outfit'; font-weight: 700; font-size: 14px; letter-spacing: 3px; color: #C9821D;">FUNCIONALIDADES</div>
+    <h2 style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(28px,4vw,40px); color: #1F1B14; margin: 12px 0 0;">Orden y control de todo el equipo.</h2>
+  </div>
+  <div class="bento">
+${FEATURES.map(f => `    <article class="bento__item ${f.span}">
+      <img src="assets/img/${f.img}" alt="${f.t} en ENSAMBLA" title="${f.t}" loading="lazy" decoding="async">
+      <div class="bento__cap"><h3>${f.t}</h3><p>${f.d}</p></div>
+    </article>`).join('\n')}
+  </div>
+</div>
+`;
 
 /* ---- FaqItem (accordion nativo <details>) -------------------------------- */
 function faqItem(q, a) {
@@ -172,6 +225,23 @@ function extractBody(tpl) {
   return inner.trim();
 }
 
+function applyEnhancements(html) {
+  // Marcadores para las animaciones de enhance.js (todo opcional/no-JS-safe).
+  return html
+    // rediseño de funcionalidades (bento) y testimonios (solo en la portada)
+    .replace(/<!-- FUNCIONALIDADES -->[\s\S]*?(?=\s*<!-- IA -->)/, FUNCIONALIDADES_HTML)
+    .replace(/<!-- TESTIMONIOS -->[\s\S]*?(?=\s*<!-- PRECIOS TEASER -->)/, TESTIMONIALS_HTML)
+    // contenedor principal
+    .replace('<div style="display: flex; flex-direction: column;">',
+             '<div class="site-main" style="display: flex; flex-direction: column;">')
+    // mockup del hero -> animación 3D en scroll
+    .replace('<div style="margin-top: 20px; width: 100%; max-width: 980px;',
+             '<div class="hero-mockup" style="margin-top: 20px; width: 100%; max-width: 980px;')
+    // grids de tarjetas -> reveal en cascada + hover
+    .replace(/<div style="display: grid; grid-template-columns: repeat\(auto-fit/g,
+             '<div class="reveal-grid" style="display: grid; grid-template-columns: repeat(auto-fit');
+}
+
 function fixLinks(html) {
   return html
     .replace(/hola@ensambla\.app/g, EMAIL)   // usa el correo de contacto real
@@ -249,12 +319,13 @@ function head(p, faqItems) {
   <link rel="manifest" href="site.webmanifest">
 
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/outfit-latin.woff2" crossorigin>${p.active === 'home' ? '\n  <link rel="preload" as="image" href="assets/img/hero-dashboard.webp" fetchpriority="high">' : ''}
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=${VER}">
 
   ${jsonLd(p.active === 'home' ? 'index' : (p.file === 'faq.html' ? 'faq' : 'other'), faqItems)}
 </head>
 <body>
 ${LOADER}
+<div id="progress" aria-hidden="true"></div>
 `;
 }
 
@@ -271,6 +342,7 @@ const TAIL = `
     setTimeout(hide, 4000);
   })();
 </script>
+<script src="assets/js/enhance.js?v=${VER}" defer></script>
 </body>
 </html>`;
 
@@ -285,6 +357,7 @@ for (const key of Object.keys(PAGES)) {
   body = renameRawTags(body);
   body = transformImages(body);
   body = fixLinks(body);
+  body = applyEnhancements(body);
   const out = head(p, faqItems) + body + TAIL;
   fs.writeFileSync(p.file, out);
   built++;

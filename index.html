@@ -30,18 +30,20 @@
 
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/outfit-latin.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/img/hero-dashboard.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=4">
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ENSAMBLA","url":"https://ensambla.vercel.app","logo":"https://ensambla.vercel.app/favicon.svg","email":"carlose.guzmane62@gmail.com","founder":"Carlos Enrique Guzmán Espinoza","areaServed":"SV","sameAs":[],"contactPoint":{"@type":"ContactPoint","contactType":"ventas","telephone":"+50374691631","availableLanguage":"es"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ENSAMBLA","applicationCategory":"BusinessApplication","operatingSystem":"iOS, Android, Web","description":"Canciones con acordes, setlists, calendario de eventos, disponibilidad, chat y metrónomo integrado. Todo tu equipo de música sincronizado, del ensayo al escenario. 14 días gratis.","url":"https://ensambla.vercel.app","offers":{"@type":"Offer","price":"4.99","priceCurrency":"USD","description":"Desde $4.99/mes, 14 días de prueba gratis"}}</script>
 </head>
 <body>
 <div id="loader" role="status" aria-live="polite" aria-label="Cargando ENSAMBLA"><svg class="loader-mark" viewBox="0 0 120 120" aria-hidden="true"><circle cx="24" cy="24" r="10" fill="#FAF9F5"/><circle cx="60" cy="24" r="10" fill="#FAF9F5"/><circle cx="24" cy="60" r="10" fill="#FAF9F5"/><rect x="46" y="46" width="26" height="26" rx="8" fill="#F0A125" transform="rotate(45 60 60)"/></svg></div>
-<div style="display: flex; flex-direction: column;">
+<div id="progress" aria-hidden="true"></div>
+<div class="site-main" style="display: flex; flex-direction: column;">
 
   <header class="nav">
   <a class="nav__brand" href="index.html" title="ENSAMBLA — inicio"><img class="nav__logo-img" src="assets/brand/logo-completo-oscuro.png" alt="ENSAMBLA" width="1573" height="370"></a>
-  <nav class="nav__links" aria-label="Principal">
+  <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
+  <nav class="nav__links" id="nav-menu" aria-label="Principal">
     <a class="nav__link" href="index.html#funcionalidades">Funcionalidades</a>
     <a class="nav__link" href="precios.html">Precios</a>
     <a class="nav__link" href="faq.html">FAQ</a>
@@ -60,7 +62,7 @@
     </div>
     <div style="font-family: 'Outfit'; font-size: 13px; color: #7B756A; margin-top: 4px;">14 días de prueba gratis · iOS, Android y web</div>
 
-    <div style="margin-top: 20px; width: 100%; max-width: 980px; border-radius: 18px; overflow: hidden; box-shadow: 0 40px 90px rgba(0,0,0,0.5); border: 1px solid #221E17;">
+    <div class="hero-mockup" style="margin-top: 20px; width: 100%; max-width: 980px; border-radius: 18px; overflow: hidden; box-shadow: 0 40px 90px rgba(0,0,0,0.5); border: 1px solid #221E17;">
       <div style="height: 40px; background: #17140F; display: flex; align-items: center; gap: 8px; padding: 0 16px;">
         <div style="width: 9px; height: 9px; border-radius: 50%; background: #3A362C;"></div>
         <div style="width: 9px; height: 9px; border-radius: 50%; background: #3A362C;"></div>
@@ -90,7 +92,7 @@
       <div style="font-family: 'Outfit'; font-weight: 700; font-size: 14px; letter-spacing: 3px; color: #F0A125;">EL PROBLEMA</div>
       <h2 style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(28px,4vw,40px); color: #FAF9F5; margin: 10px 0 0; text-wrap: balance;">Tu equipo vive repartido en cinco herramientas distintas.</h2>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; max-width: 1200px; width: 100%;">
+    <div class="reveal-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; max-width: 1200px; width: 100%;">
       <div style="background: #17140F; border: 1px solid #2A251C; border-radius: 16px; padding: 26px 22px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="margin-bottom: 10px;"><path d="M21 12a9 9 0 1 1-4.2-7.6L21 3l-1.2 4.2A8.9 8.9 0 0 1 21 12Z" stroke="#F0A125" stroke-width="1.6"></path><path d="M8 10.5c0 3 2.5 5.5 5.5 5.5" stroke="#F0A125" stroke-width="1.6" stroke-linecap="round"></path></svg><div style="font-family: 'Outfit'; font-weight: 700; font-size: 17px; color: #FAF9F5;">WhatsApp</div><div style="font-family: 'Outfit'; font-size: 14px; color: #8A8377; margin-top: 6px;">Setlists perdidos entre mensajes</div></div>
       <div style="background: #17140F; border: 1px solid #2A251C; border-radius: 16px; padding: 26px 22px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="margin-bottom: 10px;"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="#F0A125" stroke-width="1.6"></path><path d="M14 3v4h4" stroke="#F0A125" stroke-width="1.6"></path></svg><div style="font-family: 'Outfit'; font-weight: 700; font-size: 17px; color: #FAF9F5;">PDFs sueltos</div><div style="font-family: 'Outfit'; font-size: 14px; color: #8A8377; margin-top: 6px;">Acordes desactualizados</div></div>
       <div style="background: #17140F; border: 1px solid #2A251C; border-radius: 16px; padding: 26px 22px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="margin-bottom: 10px;"><circle cx="12" cy="13" r="8" stroke="#F0A125" stroke-width="1.6"></circle><path d="M12 9v4l3 2" stroke="#F0A125" stroke-width="1.6" stroke-linecap="round"></path><path d="M9 2h6" stroke="#F0A125" stroke-width="1.6" stroke-linecap="round"></path></svg><div style="font-family: 'Outfit'; font-weight: 700; font-size: 17px; color: #FAF9F5;">Metrónomo aparte</div><div style="font-family: 'Outfit'; font-size: 14px; color: #8A8377; margin-top: 6px;">Otra app, otro tempo</div></div>
@@ -99,21 +101,39 @@
     </div>
   </div>
 
-  <!-- FUNCIONALIDADES -->
-  <div id="funcionalidades" style="background: #FAF9F5; padding: clamp(56px,8vw,90px) clamp(20px,5vw,48px); display: flex; flex-direction: column; gap: 44px; align-items: center;">
-    <div style="text-align: center; max-width: 760px;">
-      <div style="font-family: 'Outfit'; font-weight: 700; font-size: 14px; letter-spacing: 3px; color: #C9821D;">FUNCIONALIDADES</div>
-      <h2 style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(28px,4vw,40px); color: #1F1B14; margin: 10px 0 0;">Orden y control de todo el equipo.</h2>
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; width: 100%;">
-      <div style="background: #FFFFFF; border: 1px solid #E5E0D6; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px;"><img src="assets/img/calendario-eventos.webp" alt="Calendario de eventos y ensayos en ENSAMBLA" title="Calendario de eventos y ensayos en ENSAMBLA" width="1334" height="991" loading="lazy" decoding="async" style="width: 100%; border-radius: 10px; display: block;;height:auto"><div style="font-family: 'Outfit'; font-weight: 700; color: #1F1B14; font-size: 17px;">Calendario de eventos y ensayos</div></div>
-      <div style="background: #FFFFFF; border: 1px solid #E5E0D6; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px;"><img src="assets/img/instrumentos-musicos.webp" alt="Instrumentos y músicos asignados por evento" title="Instrumentos y músicos asignados por evento" width="1338" height="998" loading="lazy" decoding="async" style="width: 100%; border-radius: 10px; display: block;;height:auto"><div style="font-family: 'Outfit'; font-weight: 700; color: #1F1B14; font-size: 17px;">Instrumentos y músicos por evento</div></div>
-      <div style="background: #FFFFFF; border: 1px solid #E5E0D6; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px;"><img src="assets/img/miembros-roles.webp" alt="Miembros, roles y multi-organización" title="Miembros, roles y multi-organización" width="1336" height="995" loading="lazy" decoding="async" style="width: 100%; border-radius: 10px; display: block;;height:auto"><div style="font-family: 'Outfit'; font-weight: 700; color: #1F1B14; font-size: 17px;">Miembros, roles y multi-organización</div></div>
-      <div style="background: #FFFFFF; border: 1px solid #E5E0D6; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px;"><img src="assets/img/disponibilidad.webp" alt="Disponibilidad de cada músico" title="Disponibilidad de cada músico" width="1327" height="994" loading="lazy" decoding="async" style="width: 100%; border-radius: 10px; display: block;;height:auto"><div style="font-family: 'Outfit'; font-weight: 700; color: #1F1B14; font-size: 17px;">Disponibilidad de cada músico</div></div>
-      <div style="background: #FFFFFF; border: 1px solid #E5E0D6; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px;"><img src="assets/img/chat-equipo.webp" alt="Chat interno del equipo" title="Chat interno del equipo" width="1259" height="977" loading="lazy" decoding="async" style="width: 100%; border-radius: 10px; display: block;;height:auto"><div style="font-family: 'Outfit'; font-weight: 700; color: #1F1B14; font-size: 17px;">Chat interno del equipo</div></div>
-      <div style="background: #FFFFFF; border: 1px solid #E5E0D6; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px;"><img src="assets/img/cancionero-acordes.webp" alt="Cancionero con acordes y transposición" title="Cancionero con acordes y transposición" width="1318" height="1003" loading="lazy" decoding="async" style="width: 100%; border-radius: 10px; display: block;;height:auto"><div style="font-family: 'Outfit'; font-weight: 700; color: #1F1B14; font-size: 17px;">Cancionero con acordes y transposición</div></div>
-    </div>
+  <div id="funcionalidades" style="background: #FAF9F5; padding: clamp(56px,8vw,96px) clamp(20px,5vw,48px);">
+  <div style="text-align: center; max-width: 760px; margin: 0 auto clamp(36px,5vw,52px);">
+    <div style="font-family: 'Outfit'; font-weight: 700; font-size: 14px; letter-spacing: 3px; color: #C9821D;">FUNCIONALIDADES</div>
+    <h2 style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(28px,4vw,40px); color: #1F1B14; margin: 12px 0 0;">Orden y control de todo el equipo.</h2>
   </div>
+  <div class="bento">
+    <article class="bento__item b-wide b-tall">
+      <img src="assets/img/cancionero-acordes.webp" alt="Cancionero con acordes en ENSAMBLA" title="Cancionero con acordes" loading="lazy" decoding="async">
+      <div class="bento__cap"><h3>Cancionero con acordes</h3><p>Letras, acordes y tono ajustable para cada voz e instrumento. Transpón una canción entera con un toque.</p></div>
+    </article>
+    <article class="bento__item b-wide">
+      <img src="assets/img/calendario-eventos.webp" alt="Calendario de eventos y ensayos en ENSAMBLA" title="Calendario de eventos y ensayos" loading="lazy" decoding="async">
+      <div class="bento__cap"><h3>Calendario de eventos y ensayos</h3><p>Fechas, lugares y horarios en un solo calendario que todo el equipo ve.</p></div>
+    </article>
+    <article class="bento__item b-wide">
+      <img src="assets/img/disponibilidad.webp" alt="Disponibilidad de cada músico en ENSAMBLA" title="Disponibilidad de cada músico" loading="lazy" decoding="async">
+      <div class="bento__cap"><h3>Disponibilidad de cada músico</h3><p>Cada quien marca cuándo puede; tú armas el equipo sin adivinar.</p></div>
+    </article>
+    <article class="bento__item b-md">
+      <img src="assets/img/instrumentos-musicos.webp" alt="Instrumentos y músicos en ENSAMBLA" title="Instrumentos y músicos" loading="lazy" decoding="async">
+      <div class="bento__cap"><h3>Instrumentos y músicos</h3><p>Asigna quién toca qué en cada servicio.</p></div>
+    </article>
+    <article class="bento__item b-md">
+      <img src="assets/img/chat-equipo.webp" alt="Chat interno del equipo en ENSAMBLA" title="Chat interno del equipo" loading="lazy" decoding="async">
+      <div class="bento__cap"><h3>Chat interno del equipo</h3><p>Coordina sin perder mensajes.</p></div>
+    </article>
+    <article class="bento__item b-md">
+      <img src="assets/img/miembros-roles.webp" alt="Miembros y multi-organización en ENSAMBLA" title="Miembros y multi-organización" loading="lazy" decoding="async">
+      <div class="bento__cap"><h3>Miembros y multi-organización</h3><p>Varios grupos, una sola cuenta.</p></div>
+    </article>
+  </div>
+</div>
+
 
   <!-- IA -->
   <div style="background: linear-gradient(135deg, #1A140A 0%, #0D0C0B 60%); padding: clamp(56px,8vw,90px) clamp(20px,5vw,48px); display: flex; flex-wrap: wrap; align-items: center; gap: 50px; justify-content: center;">
@@ -149,30 +169,42 @@
     </div>
   </div>
 
-  <!-- TESTIMONIOS -->
-  <div style="background: #FAF9F5; padding: clamp(56px,8vw,90px) clamp(20px,5vw,48px); display: flex; flex-direction: column; gap: 44px; align-items: center;">
-    <div style="text-align: center; max-width: 760px;">
-      <div style="font-family: 'Outfit'; font-weight: 700; font-size: 14px; letter-spacing: 3px; color: #C9821D;">EQUIPOS QUE YA LO USAN</div>
-      <h2 style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(28px,4vw,40px); color: #1F1B14; margin: 10px 0 0;">Menos caos, más música.</h2>
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; width: 100%;">
-      <div style="background: #FFFFFF; border: 1px solid #E5E0D6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 16px;">
-        <div style="font-size: 22px; color: #F0A125;">★★★★★</div>
-        <div style="font-family: 'Outfit'; font-size: 16px; color: #3A362C; line-height: 1.6;">"Antes perdíamos veinte minutos de cada ensayo viendo quién tenía la última versión del setlist. Con Ensambla eso simplemente desapareció."</div>
-        <div style="font-family: 'Outfit'; font-weight: 700; font-size: 14px; color: #1F1B14;">Daniel Reyes <span style="font-weight: 400; color: #8A8377;">· Líder de alabanza, Comunidad Vida Nueva</span></div>
-      </div>
-      <div style="background: #FFFFFF; border: 1px solid #E5E0D6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 16px;">
-        <div style="font-size: 22px; color: #F0A125;">★★★★★</div>
-        <div style="font-family: 'Outfit'; font-size: 16px; color: #3A362C; line-height: 1.6;">"El modo en vivo con el metrónomo integrado cambió cómo tocamos. Ya no hay excusas de tempo el domingo en la mañana."</div>
-        <div style="font-family: 'Outfit'; font-weight: 700; font-size: 14px; color: #1F1B14;">Marta Escobar <span style="font-weight: 400; color: #8A8377;">· Baterista, Ministerio Roca Eterna</span></div>
-      </div>
-      <div style="background: #FFFFFF; border: 1px solid #E5E0D6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 16px;">
-        <div style="font-size: 22px; color: #F0A125;">★★★★★</div>
-        <div style="font-family: 'Outfit'; font-size: 16px; color: #3A362C; line-height: 1.6;">"Tenemos tres grupos distintos y cada músico ahora sabe exactamente cuándo y dónde toca. La disponibilidad sola nos ahorra horas."</div>
-        <div style="font-family: 'Outfit'; font-weight: 700; font-size: 14px; color: #1F1B14;">Josué López <span style="font-weight: 400; color: #8A8377;">· Coordinador de música, Banda Génesis</span></div>
-      </div>
-    </div>
+  <div class="tsection">
+  <div class="tsection__head">
+    <div class="tsection__eyebrow">EQUIPOS QUE YA LO USAN</div>
+    <h2 class="tsection__title">Menos caos, más música.</h2>
   </div>
+  <div class="tgrid">
+    <figure class="tcard">
+      <span class="tcard__quote" aria-hidden="true">&ldquo;</span>
+      <div class="tcard__stars" aria-label="5 de 5 estrellas">★★★★★</div>
+      <blockquote class="tcard__text">Antes perdíamos veinte minutos de cada ensayo viendo quién tenía la última versión del setlist. Con Ensambla eso simplemente desapareció.</blockquote>
+      <figcaption class="tcard__author">
+        <span class="tcard__avatar" aria-hidden="true">DR</span>
+        <span class="tcard__who"><span class="tcard__name">Daniel Reyes</span><span class="tcard__role">Líder de alabanza · Comunidad Vida Nueva</span></span>
+      </figcaption>
+    </figure>
+    <figure class="tcard">
+      <span class="tcard__quote" aria-hidden="true">&ldquo;</span>
+      <div class="tcard__stars" aria-label="5 de 5 estrellas">★★★★★</div>
+      <blockquote class="tcard__text">El modo en vivo con el metrónomo integrado cambió cómo tocamos. Ya no hay excusas de tempo el domingo en la mañana.</blockquote>
+      <figcaption class="tcard__author">
+        <span class="tcard__avatar" aria-hidden="true">ME</span>
+        <span class="tcard__who"><span class="tcard__name">Marta Escobar</span><span class="tcard__role">Baterista · Ministerio León de Judá</span></span>
+      </figcaption>
+    </figure>
+    <figure class="tcard">
+      <span class="tcard__quote" aria-hidden="true">&ldquo;</span>
+      <div class="tcard__stars" aria-label="5 de 5 estrellas">★★★★★</div>
+      <blockquote class="tcard__text">Tenemos tres grupos distintos y cada músico ahora sabe exactamente cuándo y dónde toca. La disponibilidad sola nos ahorra horas.</blockquote>
+      <figcaption class="tcard__author">
+        <span class="tcard__avatar" aria-hidden="true">JL</span>
+        <span class="tcard__who"><span class="tcard__name">Daniel Molina</span><span class="tcard__role">Coordinador de música · Banda Génesis</span></span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
 
   <!-- PRECIOS TEASER -->
   <div style="background: #0D0C0B; padding: clamp(56px,8vw,90px) clamp(20px,5vw,48px); display: flex; flex-direction: column; align-items: center; gap: 40px;">
@@ -248,5 +280,6 @@
     setTimeout(hide, 4000);
   })();
 </script>
+<script src="assets/js/enhance.js?v=4" defer></script>
 </body>
 </html>

@@ -58,6 +58,8 @@ img { max-width: 100%; }
 .nav__name { font-weight: 800; font-size: 19px; letter-spacing: .5px; color: #FAF9F5; }
 .brand-dot { color: #F0A125; }
 .brand-mark { display: block; flex: none; }
+.nav__logo-img { height: 30px; width: auto; display: block; }
+.footer__logo-img { height: 30px; width: auto; display: block; }
 .nav__links { display: flex; align-items: center; gap: 6px; }
 .nav__link {
   color: #B5AE9F; text-decoration: none; font-weight: 600; font-size: 15px;

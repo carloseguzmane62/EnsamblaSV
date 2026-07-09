@@ -38,7 +38,7 @@ const LOADER = `<div id="loader" role="status" aria-live="polite" aria-label="Ca
 function NAV(active) {
   const cur = (k) => active === k ? ' aria-current="page"' : '';
   return `<header class="nav">
-  <a class="nav__brand" href="index.html" title="ENSAMBLA — inicio">${LOGO(30)}<span class="nav__name">ENSAMBLA<span class="brand-dot">.</span></span></a>
+  <a class="nav__brand" href="index.html" title="ENSAMBLA — inicio"><img class="nav__logo-img" src="assets/brand/logo-completo-oscuro.png" alt="ENSAMBLA" width="1573" height="370"></a>
   <nav class="nav__links" aria-label="Principal">
     <a class="nav__link" href="index.html#funcionalidades"${cur('funcionalidades')}>Funcionalidades</a>
     <a class="nav__link" href="precios.html"${cur('precios')}>Precios</a>
@@ -52,7 +52,7 @@ function NAV(active) {
 const FOOTER = `<footer class="footer">
   <div class="footer__grid">
     <div class="footer__brand">
-      <div class="footer__brandrow">${LOGO(28)}<span class="footer__name">ENSAMBLA<span class="brand-dot">.</span></span></div>
+      <div class="footer__brandrow"><img class="footer__logo-img" src="assets/brand/logo-completo-oscuro.png" alt="ENSAMBLA" width="1573" height="370"></div>
       <p class="footer__tagline">Gestión para equipos de música y alabanza: canciones con acordes, setlists, eventos, disponibilidad, chat y metrónomo integrado.</p>
     </div>
     <div class="footer__col">
@@ -125,11 +125,20 @@ function transformImages(html) {
   return html.replace(/<img\s+src="([^"]+)"([^>]*)>/g, (full, uuid, rest) => {
     const info = IMAGES[uuid];
     if (!info) return full; // deja intacto lo desconocido
-    const style = (rest.match(/style="[^"]*"/) || [''])[0];
+    // El estilo original controla el tamaño (width:100% o height:440px, etc.).
+    // Los atributos width/height del HTML son solo pistas para el navegador y
+    // NO deben romper el aspect ratio: forzamos la dimensión que el CSS deja
+    // libre a "auto" (si no, la imagen sale estirada/gigante).
+    let css = (rest.match(/style="([^"]*)"/) || [null, ''])[1];
+    const hasW = /(?:^|;)\s*width\s*:/.test(css);
+    const hasH = /(?:^|;)\s*height\s*:/.test(css);
+    if (hasW && !hasH) css += ';height:auto';
+    else if (hasH && !hasW) css += ';width:auto';
+    else if (!hasW && !hasH) css += 'max-width:100%;height:auto';
     const load = info.hero
       ? 'loading="eager" fetchpriority="high" decoding="async"'
       : 'loading="lazy" decoding="async"';
-    return `<img src="assets/img/${info.f}" alt="${info.alt}" title="${info.alt}" width="${info.w}" height="${info.h}" ${load} ${style}>`;
+    return `<img src="assets/img/${info.f}" alt="${info.alt}" title="${info.alt}" width="${info.w}" height="${info.h}" ${load} style="${css}">`;
   });
 }
 
@@ -235,7 +244,8 @@ function head(p, faqItems) {
   <meta name="twitter:image" content="${OG_IMAGE}">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="icon" href="assets/brand/icono-app-oscuro.png" type="image/png" sizes="1024x1024">
+  <link rel="apple-touch-icon" href="assets/brand/icono-app-oscuro.png">
   <link rel="manifest" href="site.webmanifest">
 
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/outfit-latin.woff2" crossorigin>${p.active === 'home' ? '\n  <link rel="preload" as="image" href="assets/img/hero-dashboard.webp" fetchpriority="high">' : ''}

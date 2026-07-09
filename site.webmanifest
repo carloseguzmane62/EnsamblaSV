@@ -8,6 +8,8 @@
   "theme_color": "#0D0C0B",
   "lang": "es",
   "icons": [
-    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/brand/icono-app-oscuro.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any" },
+    { "src": "assets/brand/icono-app-claro.png", "sizes": "1024x1024", "type": "image/png", "purpose": "maskable" }
   ]
 }

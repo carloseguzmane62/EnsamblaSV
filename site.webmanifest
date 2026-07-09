@@ -1,0 +1,13 @@
+{
+  "name": "ENSAMBLA",
+  "short_name": "ENSAMBLA",
+  "description": "Gestión para equipos de música y alabanza.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D0C0B",
+  "theme_color": "#0D0C0B",
+  "lang": "es",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

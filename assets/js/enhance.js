@@ -154,6 +154,13 @@
   Array.prototype.forEach.call(document.querySelectorAll('.tcol__track'), function (track) {
     track.style.setProperty('--dur', (track.getAttribute('data-dur') || 30) + 's');
     if (reduce) return; // sin animación: no duplicar contenido
-    track.innerHTML += track.innerHTML; // segunda copia para que translateY(-50%) empalme
+    // Segunda copia para que translateY(-50%) empalme; se marca .tq--dup para ocultarla en móvil.
+    var src = document.createElement('div');
+    src.innerHTML = track.innerHTML;
+    Array.prototype.slice.call(src.children).forEach(function (card) {
+      card.classList.add('tq--dup');
+      card.setAttribute('aria-hidden', 'true');
+      track.appendChild(card);
+    });
   });
 })();

@@ -209,39 +209,60 @@ details > summary:focus-visible { outline: 2px solid #F0A125; outline-offset: 2p
 .reveal-grid > *, .tcard { transform-style: preserve-3d; }
 
 /* ===== Testimonios (rediseño 3D) ===== */
-.tsection { background: #FAF9F5; padding: clamp(56px,8vw,96px) clamp(20px,5vw,48px); }
-.tsection__head { text-align: center; max-width: 760px; margin: 0 auto clamp(36px,5vw,52px); }
-.tsection__eyebrow { font-weight: 700; font-size: 14px; letter-spacing: 3px; color: #C9821D; }
-.tsection__title { font-weight: 800; font-size: clamp(28px,4vw,40px); color: #1F1B14; margin: 12px 0 0; }
-.tgrid {
-  max-width: 1160px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px;
+.tsection { background: #FAF9F5; padding: clamp(56px,8vw,96px) clamp(20px,5vw,48px); overflow: hidden; }
+.tsection__head { text-align: center; max-width: 620px; margin: 0 auto clamp(34px,5vw,48px); }
+.tsection__badge {
+  display: inline-block; font-weight: 700; font-size: 12.5px; letter-spacing: 2px;
+  color: #C9821D; background: rgba(240,161,37,.12);
+  border: 1px solid rgba(240,161,37,.28); border-radius: 999px; padding: 6px 16px;
 }
-.tcard {
-  position: relative; border-radius: 20px; padding: 30px 28px 26px;
+.tsection__title { font-weight: 800; font-size: clamp(28px,4vw,42px); color: #1F1B14; margin: 18px 0 0; letter-spacing: -.02em; }
+.tsection__sub { font-size: 16.5px; line-height: 1.6; color: #6B6459; margin: 12px 0 0; }
+
+/* Marquee de columnas (nuevo diseño animado) */
+.tmarquee {
+  max-width: 1160px; margin: 0 auto; display: flex; gap: 22px; justify-content: center;
+  max-height: 640px; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+}
+.tcol { flex: 1 1 0; min-width: 0; max-width: 360px; }
+.tcol__track {
+  display: flex; flex-direction: column; gap: 22px;
+  will-change: transform;
+  animation: tscroll var(--dur, 30s) linear infinite;
+}
+@keyframes tscroll { to { transform: translateY(-50%); } }
+
+.tq {
+  position: relative; border-radius: 20px; padding: 26px 26px 24px;
   background: linear-gradient(#FFFFFF, #FFFFFF) padding-box,
-              linear-gradient(140deg, rgba(240,161,37,.55), rgba(229,224,214,.6)) border-box;
+              linear-gradient(140deg, rgba(240,161,37,.50), rgba(229,224,214,.55)) border-box;
   border: 1.5px solid transparent;
-  box-shadow: 0 10px 30px rgba(20,18,14,.06);
-  display: flex; flex-direction: column; gap: 16px;
-  transition: transform .45s cubic-bezier(.22,.61,.36,1), box-shadow .3s ease;
+  box-shadow: 0 12px 30px rgba(20,18,14,.07);
+  display: flex; flex-direction: column; gap: 14px;
 }
-.tcard:hover { box-shadow: 0 26px 60px rgba(240,161,37,.20); }
-.tcard__quote { position: absolute; top: 18px; right: 22px; font-family: Georgia, serif;
-  font-size: 64px; line-height: 1; color: rgba(240,161,37,.18); }
-.tcard__stars { color: #F0A125; font-size: 18px; letter-spacing: 2px; }
-.tcard__text { font-size: 16px; line-height: 1.65; color: #3A362C; margin: 0; }
-.tcard__author { display: flex; align-items: center; gap: 13px; margin-top: 2px; }
-.tcard__avatar {
-  width: 46px; height: 46px; flex: none; border-radius: 50%;
+.tq__stars { color: #F0A125; font-size: 15px; letter-spacing: 2px; }
+.tq__text { font-size: 15.5px; line-height: 1.62; color: #3A362C; margin: 0; }
+.tq__author { display: flex; align-items: center; gap: 12px; margin-top: 2px; }
+.tq__avatar {
+  width: 42px; height: 42px; flex: none; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-weight: 800; font-size: 15px; color: #14120E;
+  font-weight: 800; font-size: 14px; color: #14120E;
   background: linear-gradient(135deg, #F0A125, #E08A0C);
   box-shadow: 0 6px 16px rgba(240,161,37,.35);
 }
-.tcard__who { display: flex; flex-direction: column; line-height: 1.35; }
-.tcard__name { font-weight: 700; font-size: 15px; color: #1F1B14; }
-.tcard__role { font-size: 13px; color: #8A8377; }
+.tq__who { display: flex; flex-direction: column; line-height: 1.35; }
+.tq__name { font-weight: 700; font-size: 14.5px; color: #1F1B14; }
+.tq__role { font-size: 12.5px; color: #8A8377; }
+
+@media (max-width: 1023px) { .tcol--lg { display: none; } }
+@media (max-width: 719px)  { .tcol--md { display: none; } .tmarquee { max-height: 560px; } }
+@media (prefers-reduced-motion: reduce) {
+  .tcol__track { animation: none; }
+  .tmarquee { max-height: none; overflow: visible;
+    -webkit-mask-image: none; mask-image: none; }
+}
 
 /* ===== Bento grid (Funcionalidades) ===== */
 .bento {

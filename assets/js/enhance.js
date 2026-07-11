@@ -149,4 +149,11 @@
       });
     });
   }
+
+  /* ---------- Marquee de testimonios (loop sin costura) ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.tcol__track'), function (track) {
+    track.style.setProperty('--dur', (track.getAttribute('data-dur') || 30) + 's');
+    if (reduce) return; // sin animación: no duplicar contenido
+    track.innerHTML += track.innerHTML; // segunda copia para que translateY(-50%) empalme
+  });
 })();

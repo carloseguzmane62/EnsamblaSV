@@ -259,18 +259,20 @@ details > summary:focus-visible { outline: 2px solid #F0A125; outline-offset: 2p
 /* Tablet: 2 columnas animadas */
 @media (max-width: 1023px) { .tcol--lg { display: none; } }
 
-/* Móvil: sin marquee — stack estático, ancho completo y recortado (no todos) */
+/* Móvil: sin marquee — stack en bloque, ancho completo, tarjetas sólidas */
 @media (max-width: 719px) {
   .tmarquee {
-    flex-direction: column; align-items: stretch; gap: 14px;
-    max-width: none; max-height: none; overflow: visible;
+    display: block; margin: 0; max-width: none; max-height: none; overflow: visible;
     -webkit-mask-image: none; mask-image: none;
   }
-  .tcol { max-width: none; width: 100%; }
-  .tcol__track { animation: none; gap: 14px; }
-  .tq { padding: 22px 20px 20px; }
+  .tcol { display: block; width: auto; max-width: none; margin: 0; }
+  .tcol__track { display: block; animation: none; }
+  .tq {
+    display: flex; width: auto; margin: 0 0 14px; padding: 22px 20px 20px;
+    background: #FFFFFF; border: 1px solid #EBE3D4;
+  }
   .tq--dup { display: none; } /* oculta las copias del loop de desktop */
-  /* Muestra solo 2 por columna (6 en total) para que el scroll no sea eterno */
+  /* Solo 2 por columna (6 en total) para que el scroll no sea eterno */
   .tcol__track > .tq:nth-child(n+3) { display: none; }
 }
 

@@ -21,7 +21,7 @@ const hashFiles = (paths) => {
 const VER = hashFiles(['assets/css/styles.css', 'assets/js/enhance.js']);
 const SITE_URL = 'https://ensambla.vercel.app';    // ← cambia cuando tengas dominio propio
 const WA = 'https://wa.me/50374691631';            // WhatsApp +503 7469 1631
-const EMAIL = 'carlose.guzmane62@gmail.com';
+const EMAIL = 'ensambla.app@gmail.com';
 const OG_IMAGE = SITE_URL + '/assets/img/hero-dashboard.webp';
 
 /* ---- Marca / logo -------------------------------------------------------- */
@@ -89,7 +89,7 @@ const FOOTER = `<footer class="footer">
     </div>
   </div>
   <div class="footer__bottom">
-    <span>&copy; 2026 ENSAMBLA · Carlos Enrique Guzmán Espinoza · El Salvador</span>
+    <span>&copy; 2026 ENSAMBLA · El Salvador</span>
     <span>Hecho para equipos que hacen música.</span>
   </div>
 </footer>`;
@@ -287,6 +287,8 @@ function applyEnhancements(html) {
 function fixLinks(html) {
   return html
     .replace(/hola@ensambla\.app/g, EMAIL)   // usa el correo de contacto real
+    .replace(/carlose\.guzmane62@gmail\.com/g, EMAIL)      // correo viejo -> nuevo
+    .replace(/Carlos Enrique Guzmán Espinoza/g, 'ENSAMBLA') // quita el nombre personal
     .replace(/href="Sitio - Precios\.dc\.html"/g, 'href="precios.html"')
     .replace(/href="Sitio - FAQ\.dc\.html"/g, 'href="faq.html"')
     .replace(/href="Sitio - Privacidad\.dc\.html"/g, 'href="privacidad.html"')
@@ -307,7 +309,7 @@ function jsonLd(key, faqItems) {
   const org = {
     '@context': 'https://schema.org', '@type': 'Organization', name: 'ENSAMBLA',
     url: SITE_URL, logo: SITE_URL + '/favicon.svg',
-    email: EMAIL, founder: 'Carlos Enrique Guzmán Espinoza',
+    email: EMAIL,
     areaServed: 'SV', sameAs: [],
     contactPoint: { '@type': 'ContactPoint', contactType: 'ventas', telephone: '+50374691631', availableLanguage: 'es' },
   };

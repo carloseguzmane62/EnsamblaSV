@@ -30,7 +30,7 @@
 
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/outfit-latin.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/img/hero-dashboard.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/styles.css?v=56f32c7f">
+  <link rel="stylesheet" href="assets/css/styles.css?v=ee42befc">
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ENSAMBLA","url":"https://ensambla.vercel.app","logo":"https://ensambla.vercel.app/favicon.svg","email":"carlose.guzmane62@gmail.com","founder":"Carlos Enrique Guzmán Espinoza","areaServed":"SV","sameAs":[],"contactPoint":{"@type":"ContactPoint","contactType":"ventas","telephone":"+50374691631","availableLanguage":"es"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ENSAMBLA","applicationCategory":"BusinessApplication","operatingSystem":"iOS, Android, Web","description":"Canciones con acordes, setlists, calendario de eventos, disponibilidad, chat y metrónomo integrado. Todo tu equipo de música sincronizado, del ensayo al escenario. 14 días gratis.","url":"https://ensambla.vercel.app","offers":{"@type":"Offer","price":"4.99","priceCurrency":"USD","description":"Desde $4.99/mes, 14 días de prueba gratis"}}</script>
@@ -43,13 +43,17 @@
   <header class="nav">
   <a class="nav__brand" href="index.html" title="ENSAMBLA — inicio"><img class="nav__logo-img" src="assets/brand/logo-completo-oscuro.png" alt="ENSAMBLA" width="1573" height="370"></a>
   <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
-  <nav class="nav__links" id="nav-menu" aria-label="Principal">
-    <a class="nav__link" href="index.html#funcionalidades">Funcionalidades</a>
-    <a class="nav__link" href="precios.html">Precios</a>
-    <a class="nav__link" href="faq.html">FAQ</a>
-    <a class="nav__login" href="https://studio.ensambla.app" title="Iniciar sesión en ENSAMBLA">Iniciar sesión</a>
-    <a class="nav__cta" href="https://wa.me/50374691631?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener" title="Agendar demo por WhatsApp">Agendar demo</a>
-  </nav>
+  <div class="nav__menu" id="nav-menu">
+    <nav class="nav__links" aria-label="Principal">
+      <a class="nav__link" href="index.html#funcionalidades">Funcionalidades</a>
+      <a class="nav__link" href="precios.html">Precios</a>
+      <a class="nav__link" href="faq.html">FAQ</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__login" href="https://studio.ensambla.app" title="Iniciar sesión en ENSAMBLA">Iniciar sesión</a>
+      <a class="nav__cta" href="https://wa.me/50374691631?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener" title="Agendar demo por WhatsApp">Agendar demo</a>
+    </div>
+  </div>
 </header>
 
   <!-- HERO -->
@@ -77,11 +81,11 @@
   <div style="background: #FAF9F5; padding: clamp(56px,8vw,90px) clamp(20px,5vw,48px); display: flex; flex-direction: column; align-items: center; gap: 30px;">
     <div style="text-align: center;">
       <div style="font-family: 'Outfit'; font-weight: 700; font-size: 14px; letter-spacing: 3px; color: #C9821D;">MIRA ENSAMBLA</div>
-      <h2 style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(28px,4vw,38px); color: #1F1B14; margin: 10px 0 0;">En acción, en menos de un minuto.</h2>
+      <h2 style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(28px,4vw,38px); color: #1F1B14; margin: 10px 0 0;">En acción, de principio a fin.</h2>
     </div>
-    <div style="width: 100%; max-width: 1000px; aspect-ratio: 16/9; border-radius: 18px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.18); position: relative;">
-      <video controls preload="metadata" playsinline poster="assets/img/hero-dashboard.webp" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#0D0C0B;" title="ENSAMBLA en acción">
-  <source src="assets/video/ensambla-demo.mp4" type="video/mp4">
+    <div style="width: 100%; max-width: 820px; aspect-ratio: 1112/990; border-radius: 18px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.18); position: relative;">
+      <video autoplay muted loop playsinline controls preload="auto" poster="assets/img/hero-dashboard.webp" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#0D0C0B;" title="Recorrido por ENSAMBLA">
+  <source src="assets/video/recorrido-ensambla.mp4" type="video/mp4">
   Tu navegador no reproduce este video. <a href="https://wa.me/50374691631?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener">Ver la demo por WhatsApp</a>.
 </video>
     </div>
@@ -396,6 +400,6 @@
     setTimeout(hide, 4000);
   })();
 </script>
-<script src="assets/js/enhance.js?v=56f32c7f" defer></script>
+<script src="assets/js/enhance.js?v=ee42befc" defer></script>
 </body>
 </html>

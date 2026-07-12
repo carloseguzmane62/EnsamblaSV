@@ -29,7 +29,7 @@
   <link rel="manifest" href="site.webmanifest">
 
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/outfit-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/styles.css?v=56f32c7f">
+  <link rel="stylesheet" href="assets/css/styles.css?v=ee42befc">
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ENSAMBLA","url":"https://ensambla.vercel.app","logo":"https://ensambla.vercel.app/favicon.svg","email":"carlose.guzmane62@gmail.com","founder":"Carlos Enrique Guzmán Espinoza","areaServed":"SV","sameAs":[],"contactPoint":{"@type":"ContactPoint","contactType":"ventas","telephone":"+50374691631","availableLanguage":"es"}}</script>
 </head>
@@ -40,13 +40,17 @@
   <header class="nav">
   <a class="nav__brand" href="index.html" title="ENSAMBLA — inicio"><img class="nav__logo-img" src="assets/brand/logo-completo-oscuro.png" alt="ENSAMBLA" width="1573" height="370"></a>
   <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
-  <nav class="nav__links" id="nav-menu" aria-label="Principal">
-    <a class="nav__link" href="index.html#funcionalidades">Funcionalidades</a>
-    <a class="nav__link" href="precios.html">Precios</a>
-    <a class="nav__link" href="faq.html">FAQ</a>
-    <a class="nav__login" href="https://studio.ensambla.app" title="Iniciar sesión en ENSAMBLA">Iniciar sesión</a>
-    <a class="nav__cta" href="https://wa.me/50374691631?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener" title="Agendar demo por WhatsApp">Agendar demo</a>
-  </nav>
+  <div class="nav__menu" id="nav-menu">
+    <nav class="nav__links" aria-label="Principal">
+      <a class="nav__link" href="index.html#funcionalidades">Funcionalidades</a>
+      <a class="nav__link" href="precios.html">Precios</a>
+      <a class="nav__link" href="faq.html">FAQ</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__login" href="https://studio.ensambla.app" title="Iniciar sesión en ENSAMBLA">Iniciar sesión</a>
+      <a class="nav__cta" href="https://wa.me/50374691631?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener" title="Agendar demo por WhatsApp">Agendar demo</a>
+    </div>
+  </div>
 </header>
 
   <div style="background: #0D0C0B; padding: clamp(50px,7vw,72px) clamp(20px,5vw,48px) clamp(40px,6vw,54px); text-align: center;">
@@ -154,6 +158,6 @@
     setTimeout(hide, 4000);
   })();
 </script>
-<script src="assets/js/enhance.js?v=56f32c7f" defer></script>
+<script src="assets/js/enhance.js?v=ee42befc" defer></script>
 </body>
 </html>

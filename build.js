@@ -50,13 +50,17 @@ function NAV(active) {
   return `<header class="nav">
   <a class="nav__brand" href="index.html" title="ENSAMBLA — inicio"><img class="nav__logo-img" src="assets/brand/logo-completo-oscuro.png" alt="ENSAMBLA" width="1573" height="370"></a>
   <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
-  <nav class="nav__links" id="nav-menu" aria-label="Principal">
-    <a class="nav__link" href="index.html#funcionalidades"${cur('funcionalidades')}>Funcionalidades</a>
-    <a class="nav__link" href="precios.html"${cur('precios')}>Precios</a>
-    <a class="nav__link" href="faq.html"${cur('faq')}>FAQ</a>
-    <a class="nav__login" href="https://studio.ensambla.app" title="Iniciar sesión en ENSAMBLA">Iniciar sesión</a>
-    <a class="nav__cta" href="${WA}?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener" title="Agendar demo por WhatsApp">Agendar demo</a>
-  </nav>
+  <div class="nav__menu" id="nav-menu">
+    <nav class="nav__links" aria-label="Principal">
+      <a class="nav__link" href="index.html#funcionalidades"${cur('funcionalidades')}>Funcionalidades</a>
+      <a class="nav__link" href="precios.html"${cur('precios')}>Precios</a>
+      <a class="nav__link" href="faq.html"${cur('faq')}>FAQ</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__login" href="https://studio.ensambla.app" title="Iniciar sesión en ENSAMBLA">Iniciar sesión</a>
+      <a class="nav__cta" href="${WA}?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener" title="Agendar demo por WhatsApp">Agendar demo</a>
+    </div>
+  </div>
 </header>`;
 }
 
@@ -93,8 +97,8 @@ const FOOTER = `<footer class="footer">
 /* ---- Anuncio ENSAMBLA (bloque de video de la portada) --------------------
    Coloca tu clip en:  assets/video/ensambla-demo.mp4
    preload="metadata" => no descarga el video hasta que le den play (rápido).  */
-const ANUNCIO = `<video controls preload="metadata" playsinline poster="assets/img/hero-dashboard.webp" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#0D0C0B;" title="ENSAMBLA en acción">
-  <source src="assets/video/ensambla-demo.mp4" type="video/mp4">
+const ANUNCIO = `<video autoplay muted loop playsinline controls preload="auto" poster="assets/img/hero-dashboard.webp" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#0D0C0B;" title="Recorrido por ENSAMBLA">
+  <source src="assets/video/recorrido-ensambla.mp4" type="video/mp4">
   Tu navegador no reproduce este video. <a href="${WA}?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener">Ver la demo por WhatsApp</a>.
 </video>`;
 

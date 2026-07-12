@@ -19,7 +19,7 @@
       var open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    Array.prototype.forEach.call(nav.querySelectorAll('.nav__link, .nav__cta'), function (a) {
+    Array.prototype.forEach.call(nav.querySelectorAll('.nav__link, .nav__login, .nav__cta'), function (a) {
       a.addEventListener('click', function () {
         nav.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');

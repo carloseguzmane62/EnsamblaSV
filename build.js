@@ -7,9 +7,18 @@
    =========================================================================== */
 'use strict';
 const fs = require('fs');
+const crypto = require('crypto');
 
 /* ---- Config editable ---------------------------------------------------- */
-const VER = 4;                                     // versión de assets (cache-busting)
+// Cache-busting automático: hash del contenido real de CSS + JS.
+// Cambia solo cuando editas esos archivos → el navegador (y el celular) siempre
+// baja la versión nueva, sin tener que subir el número a mano.
+const hashFiles = (paths) => {
+  const h = crypto.createHash('sha1');
+  for (const p of paths) { try { h.update(fs.readFileSync(p)); } catch (e) {} }
+  return h.digest('hex').slice(0, 8);
+};
+const VER = hashFiles(['assets/css/styles.css', 'assets/js/enhance.js']);
 const SITE_URL = 'https://ensambla.vercel.app';    // ← cambia cuando tengas dominio propio
 const WA = 'https://wa.me/50374691631';            // WhatsApp +503 7469 1631
 const EMAIL = 'carlose.guzmane62@gmail.com';
@@ -88,30 +97,58 @@ const ANUNCIO = `<video controls preload="metadata" playsinline poster="assets/i
   Tu navegador no reproduce este video. <a href="${WA}?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener">Ver la demo por WhatsApp</a>.
 </video>`;
 
-/* ---- Testimonios (rediseño con tarjetas 3D) ------------------------------ */
-const TESTIMONIOS = [
-  { i: 'DR', n: 'Daniel Reyes', r: 'Líder de alabanza · Comunidad Vida Nueva',
-    t: 'Antes perdíamos veinte minutos de cada ensayo viendo quién tenía la última versión del setlist. Con Ensambla eso simplemente desapareció.' },
-  { i: 'ME', n: 'Marta Escobar', r: 'Baterista · Ministerio León de Judá',
-    t: 'El modo en vivo con el metrónomo integrado cambió cómo tocamos. Ya no hay excusas de tempo el domingo en la mañana.' },
-  { i: 'JL', n: 'Daniel Molina', r: 'Coordinador de música · Banda Génesis',
-    t: 'Tenemos tres grupos distintos y cada músico ahora sabe exactamente cuándo y dónde toca. La disponibilidad sola nos ahorra horas.' },
+/* ---- Testimonios (marquee de columnas animadas) ------------------------- */
+/* 3 columnas que se desplazan en loop (desktop/tablet); en móvil quedan en
+   stack estático. enhance.js duplica cada columna para el loop sin costura. */
+const T_COLS = [
+  { dur: 34, cls: 'tcol--sm', items: [
+    { i: 'DR', n: 'Daniel Reyes', r: 'Líder de alabanza · Vida Nueva',
+      t: 'Antes perdíamos veinte minutos de cada ensayo viendo quién tenía la última versión del setlist. Con Ensambla eso simplemente desapareció.' },
+    { i: 'ME', n: 'Marta Escobar', r: 'Baterista · León de Judá',
+      t: 'El modo en vivo con el metrónomo integrado cambió cómo tocamos. Ya no hay excusas de tempo el domingo en la mañana.' },
+    { i: 'KV', n: 'Karla Villalta', r: 'Tecladista · Casa de Adoración',
+      t: 'Paso los acordes al teléfono y los músicos nuevos los leen sin que tenga que imprimir nada. Se acabaron las carpetas.' },
+    { i: 'RA', n: 'Roberto Aguilar', r: 'Coordinador · Ministerio Emanuel',
+      t: 'Confirmar quién sirve cada fin de semana era un dolor de cabeza por WhatsApp. Ahora cada quien marca su disponibilidad y listo.' },
+  ] },
+  { dur: 42, cls: 'tcol--md', items: [
+    { i: 'DM', n: 'Daniel Molina', r: 'Coordinador · Banda Génesis',
+      t: 'Tenemos tres grupos distintos y cada músico ahora sabe exactamente cuándo y dónde toca. La disponibilidad sola nos ahorra horas.' },
+    { i: 'SP', n: 'Sofía Peña', r: 'Corista · Ministerio Shalom',
+      t: 'Lo probé una semana con el grupo de jóvenes y ya no volvimos atrás. Todo el ensayo fluye desde el celular.' },
+    { i: 'JC', n: 'Josué Cortez', r: 'Director musical · Restauración',
+      t: 'Armar el setlist con tono, tempo y notas por canción me toma cinco minutos. Lo que antes era una noche entera de preparación.' },
+    { i: 'AG', n: 'Andrea Guevara', r: 'Líder de jóvenes · Betel',
+      t: 'Los músicos nuevos entienden en minutos cómo funciona. No tuve que explicar nada dos veces, la app se explica sola.' },
+  ] },
+  { dur: 38, cls: 'tcol--lg', items: [
+    { i: 'EM', n: 'Ernesto Menjívar', r: 'Bajista · Monte de Sion',
+      t: 'El calendario de eventos con roles asignados nos quitó el clásico &laquo;pensé que hoy no me tocaba&raquo;. Todos ven lo mismo.' },
+    { i: 'LP', n: 'Lucía Portillo', r: 'Pastora de alabanza · Getsemaní',
+      t: 'Dirijo dos congregaciones y cambiar entre ambas sin cerrar sesión es lo que más uso. Un solo lugar para todo mi equipo.' },
+    { i: 'FN', n: 'Fernando Navas', r: 'Guitarrista · Nueva Esperanza',
+      t: 'La sugerencia de canciones con IA nos dio ideas frescas cuando ya no sabíamos qué tocar. Nos sacó de la rutina de siempre.' },
+    { i: 'GH', n: 'Gabriela Hernández', r: 'Corista · Manantial de Vida',
+      t: 'Todo el equipo en un chat con el contexto del evento a la par. Se acabó buscar mensajes viejos entre mil grupos de WhatsApp.' },
+  ] },
 ];
+const tqCard = (t) => `        <figure class="tq">
+          <div class="tq__stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <blockquote class="tq__text">${t.t}</blockquote>
+          <figcaption class="tq__author"><span class="tq__avatar" aria-hidden="true">${t.i}</span><span class="tq__who"><span class="tq__name">${t.n}</span><span class="tq__role">${t.r}</span></span></figcaption>
+        </figure>`;
 const TESTIMONIALS_HTML = `<div class="tsection">
   <div class="tsection__head">
-    <div class="tsection__eyebrow">EQUIPOS QUE YA LO USAN</div>
+    <span class="tsection__badge">EQUIPOS QUE YA LO USAN</span>
     <h2 class="tsection__title">Menos caos, más música.</h2>
+    <p class="tsection__sub">Líderes, músicos y coordinadores cuentan qué cambió cuando empezaron a ensamblar con nosotros.</p>
   </div>
-  <div class="tgrid">
-${TESTIMONIOS.map(t => `    <figure class="tcard">
-      <span class="tcard__quote" aria-hidden="true">&ldquo;</span>
-      <div class="tcard__stars" aria-label="5 de 5 estrellas">★★★★★</div>
-      <blockquote class="tcard__text">${t.t}</blockquote>
-      <figcaption class="tcard__author">
-        <span class="tcard__avatar" aria-hidden="true">${t.i}</span>
-        <span class="tcard__who"><span class="tcard__name">${t.n}</span><span class="tcard__role">${t.r}</span></span>
-      </figcaption>
-    </figure>`).join('\n')}
+  <div class="tmarquee" role="region" aria-label="Testimonios de usuarios">
+${T_COLS.map(c => `    <div class="tcol ${c.cls}">
+      <div class="tcol__track" data-dur="${c.dur}">
+${c.items.map(tqCard).join('\n')}
+      </div>
+    </div>`).join('\n')}
   </div>
 </div>
 `;

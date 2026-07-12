@@ -54,6 +54,7 @@ function NAV(active) {
     <a class="nav__link" href="index.html#funcionalidades"${cur('funcionalidades')}>Funcionalidades</a>
     <a class="nav__link" href="precios.html"${cur('precios')}>Precios</a>
     <a class="nav__link" href="faq.html"${cur('faq')}>FAQ</a>
+    <a class="nav__login" href="https://studio.ensambla.app" title="Iniciar sesión en ENSAMBLA">Iniciar sesión</a>
     <a class="nav__cta" href="${WA}?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener" title="Agendar demo por WhatsApp">Agendar demo</a>
   </nav>
 </header>`;

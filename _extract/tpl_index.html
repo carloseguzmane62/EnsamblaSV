@@ -114,7 +114,7 @@
   <!-- HERO -->
   <div style="background: #0D0C0B; padding: clamp(56px,9vw,96px) clamp(20px,5vw,48px) clamp(70px,9vw,100px); display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center; row-gap: 28px;">
     <div style="font-family: 'Outfit'; font-weight: 700; font-size: 15px; letter-spacing: 3px; color: #F0A125;">GESTIÓN PARA EQUIPOS DE MÚSICA Y ALABANZA</div>
-    <h1 style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(36px,6vw,64px); color: #FAF9F5; margin: 0 0 8px; max-width: 900px; line-height: 1.15;">Tu banda, por fin <span style="color: #F0A125;">organizada</span>.</h1>
+    <h1 style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(36px,6vw,64px); color: #FAF9F5; margin: 0 0 8px; max-width: 1040px; line-height: 1.15; text-wrap: balance;">Tu banda, por fin <span class="tw" data-words="organizada,sincronizada,afinada,en sintonía,lista"><span class="tw__word">organizada</span><span class="tw__caret" aria-hidden="true"></span></span></h1>
     <p style="font-family: 'Outfit'; font-size: clamp(16px,2vw,19px); line-height: 1.6; color: #B5AE9F; max-width: 640px; margin: 0; text-wrap: pretty;">Canciones con acordes, setlists, calendario de eventos, disponibilidad, chat y metrónomo integrado — todo tu equipo, sincronizado, del ensayo al escenario.</p>
     <div style="display: flex; gap: 14px 14px; flex-wrap: wrap; justify-content: center; row-gap: 16px;">
       <a href="https://wa.me/50374691631?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20ENSAMBLA" target="_blank" style="display: inline-block; background: #F0A125; color: #14120E; font-weight: 700; font-size: 15px; padding: 15px 30px; border-radius: 12px; text-decoration: none; white-space: nowrap;">Agendar demo por WhatsApp</a>
@@ -296,13 +296,82 @@
 </div>
 
   <!-- PRECIOS TEASER -->
-  <div style="background: #0D0C0B; padding: clamp(56px,8vw,90px) clamp(20px,5vw,48px); display: flex; flex-direction: column; align-items: center; gap: 40px;">
-    <div style="text-align: center; max-width: 760px;">
+  <div style="background: #0D0C0B; padding: clamp(56px,8vw,90px) clamp(20px,5vw,48px); display: flex; flex-direction: column; align-items: center; gap: 34px;">
+    <div style="text-align: center; max-width: 620px;">
       <div style="font-family: 'Outfit'; font-weight: 700; font-size: 14px; letter-spacing: 3px; color: #F0A125;">PRECIOS</div>
       <h2 style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(28px,4vw,40px); color: #FAF9F5; margin: 10px 0 0;">Empieza gratis. Crece cuando tu grupo lo pida.</h2>
       <p style="font-family: 'Outfit'; font-size: 16px; color: #B5AE9F; margin-top: 10px;">14 días de prueba, sin tarjeta. Después, un plan desde $4.99/mes.</p>
     </div>
-    <a href="Sitio - Precios.dc.html" style="background: #F0A125; color: #14120E; font-weight: 700; font-size: 15px; padding: 15px 32px; border-radius: 999px; text-decoration: none;">Ver todos los planes</a>
+
+    <div class="pricing" style="max-width: 940px;">
+      <div class="pgrid">
+        <div class="pcard">
+          <div class="pcard__name">Básico</div>
+          <div class="pcard__price"><span class="pcard__amount">$4.99</span><span class="pcard__per">/mes</span></div>
+          <ul class="pcard__feats">
+            <li>30 canciones · 10 listas</li>
+            <li>10 miembros</li>
+            <li>Metrónomo básico</li>
+          </ul>
+          <a class="pcard__cta pcard__cta--ghost" href="Sitio - Precios.dc.html">Ver detalles</a>
+        </div>
+        <div class="pcard pcard--featured">
+          <div class="pcard__badge">MÁS ELEGIDO</div>
+          <div class="pcard__name">Essential</div>
+          <div class="pcard__price"><span class="pcard__amount">$9.99</span><span class="pcard__per">/mes</span></div>
+          <ul class="pcard__feats">
+            <li>100 canciones · 25 listas</li>
+            <li>20 miembros</li>
+            <li>Metrónomo en vivo completo</li>
+          </ul>
+          <a class="pcard__cta pcard__cta--primary" href="https://wa.me/50374691631?text=Hola%2C%20quiero%20contratar%20el%20plan%20Essential%20de%20ENSAMBLA" target="_blank" rel="noopener">Contratar</a>
+        </div>
+        <div class="pcard">
+          <div class="pcard__name">Pro</div>
+          <div class="pcard__price"><span class="pcard__amount">$24.99</span><span class="pcard__per">/mes</span></div>
+          <ul class="pcard__feats">
+            <li>Todo ilimitado</li>
+            <li>10 GB de adjuntos</li>
+            <li>Metrónomo completo</li>
+          </ul>
+          <a class="pcard__cta pcard__cta--ghost" href="Sitio - Precios.dc.html">Ver detalles</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="Sitio - Precios.dc.html" style="font-family: 'Outfit'; font-weight: 700; font-size: 15px; color: #F0A125; text-decoration: none;">Ver todos los planes y comparar →</a>
+  </div>
+
+  <!-- PWA / MULTIPLATAFORMA -->
+  <div style="background: #FAF9F5; padding: clamp(56px,8vw,90px) clamp(20px,5vw,48px); display: flex; flex-direction: column; align-items: center; gap: 40px;">
+    <div style="text-align: center; max-width: 660px;">
+      <div style="font-family: 'Outfit'; font-weight: 700; font-size: 14px; letter-spacing: 3px; color: #C9821D;">SIN TIENDAS, SIN DESCARGAS</div>
+      <h2 style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(26px,4vw,38px); color: #1F1B14; margin: 12px 0 0;">Una sola app, en todos tus dispositivos.</h2>
+      <p style="font-family: 'Outfit'; font-size: 16.5px; line-height: 1.65; color: #6B6459; margin: 14px 0 0;">ENSAMBLA es una <strong style="color: #1F1B14;">PWA</strong> (una app que vive en la web). La abres en el navegador de cualquier teléfono, tablet o computadora — y si quieres, la instalas en tu pantalla de inicio como una app normal. Sin App Store ni Google Play, y siempre actualizada.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; max-width: 900px; width: 100%;">
+      <div style="background: #FFFFFF; border: 1px solid #E5E0D6; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="width: 34px; height: 34px; flex: none; border-radius: 50%; background: linear-gradient(135deg,#F0A125,#E08A0C); color: #14120E; font-family: 'Outfit'; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center;">1</span>
+          <span style="font-family: 'Outfit'; font-weight: 700; font-size: 16.5px; color: #1F1B14;">Ábrela en tu navegador</span>
+        </div>
+        <p style="font-family: 'Outfit'; font-size: 14.5px; line-height: 1.55; color: #6B6459; margin: 0;">Entra a <strong style="color: #1F1B14; font-weight: 600;">ensambla.vercel.app</strong> desde Chrome, Safari o el navegador que uses. Ya puedes empezar, sin instalar nada.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E5E0D6; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="width: 34px; height: 34px; flex: none; border-radius: 50%; background: linear-gradient(135deg,#F0A125,#E08A0C); color: #14120E; font-family: 'Outfit'; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center;">2</span>
+          <span style="font-family: 'Outfit'; font-weight: 700; font-size: 16.5px; color: #1F1B14;">Instálala (opcional)</span>
+        </div>
+        <p style="font-family: 'Outfit'; font-size: 14.5px; line-height: 1.55; color: #6B6459; margin: 0;">En el menú del navegador toca <strong style="color: #1F1B14; font-weight: 600;">&laquo;Agregar a pantalla de inicio&raquo;</strong> o <strong style="color: #1F1B14; font-weight: 600;">&laquo;Instalar app&raquo;</strong>. Aparece su ícono como cualquier app.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E5E0D6; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="width: 34px; height: 34px; flex: none; border-radius: 50%; background: linear-gradient(135deg,#F0A125,#E08A0C); color: #14120E; font-family: 'Outfit'; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center;">3</span>
+          <span style="font-family: 'Outfit'; font-weight: 700; font-size: 16.5px; color: #1F1B14;">Úsala como una app</span>
+        </div>
+        <p style="font-family: 'Outfit'; font-size: 14.5px; line-height: 1.55; color: #6B6459; margin: 0;">Se abre a pantalla completa desde tu inicio, igual que cualquier app de tu teléfono. La misma cuenta te sirve en todos tus dispositivos.</p>
+      </div>
+    </div>
   </div>
 
   <!-- FAQ TEASER -->

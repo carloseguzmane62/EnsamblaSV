@@ -150,6 +150,49 @@
     });
   }
 
+  /* ---------- Toggle mensual / anual en precios ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.pricing__toggle'), function (tg) {
+    var pricing = tg.closest('.pricing');
+    if (!pricing) return;
+    tg.addEventListener('click', function (e) {
+      var btn = e.target.closest('button[data-cycle]');
+      if (!btn) return;
+      pricing.classList.toggle('is-annual', btn.getAttribute('data-cycle') === 'y');
+      Array.prototype.forEach.call(tg.querySelectorAll('button'), function (b) {
+        b.classList.toggle('is-active', b === btn);
+      });
+    });
+  });
+
+  /* ---------- Typewriter del hero ---------- */
+  (function () {
+    var tw = document.querySelector('.tw');
+    if (!tw) return;
+    var wordEl = tw.querySelector('.tw__word');
+    var words = (tw.getAttribute('data-words') || '').split(',')
+      .map(function (s) { return s.trim(); }).filter(Boolean);
+    if (!wordEl || words.length < 2) return;
+    if (reduce) { wordEl.textContent = words[0]; return; } // sin animación: palabra fija
+
+    var TYPE = 78, DEL = 42, HOLD = 1900, PAUSE = 380;
+    var wi = 0, ci = words[0].length, deleting = true; // arranca borrando "organizada"
+    function tick() {
+      var w = words[wi];
+      if (deleting) {
+        ci--;
+        wordEl.textContent = w.slice(0, ci);
+        if (ci <= 0) { deleting = false; wi = (wi + 1) % words.length; return setTimeout(tick, PAUSE); }
+        setTimeout(tick, DEL);
+      } else {
+        ci++;
+        wordEl.textContent = w.slice(0, ci);
+        if (ci >= w.length) { deleting = true; return setTimeout(tick, HOLD); }
+        setTimeout(tick, TYPE);
+      }
+    }
+    setTimeout(tick, 2000); // deja leer "organizada" antes de animar
+  })();
+
   /* ---------- Marquee de testimonios (loop sin costura) ---------- */
   Array.prototype.forEach.call(document.querySelectorAll('.tcol__track'), function (track) {
     track.style.setProperty('--dur', (track.getAttribute('data-dur') || 30) + 's');

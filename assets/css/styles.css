@@ -46,16 +46,16 @@ img { max-width: 100%; }
   position: sticky; top: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   gap: 20px; padding: 18px clamp(20px, 5vw, 56px);
-  background: rgba(13, 12, 11, 0.68);
-  backdrop-filter: saturate(180%) blur(18px);
-  -webkit-backdrop-filter: saturate(180%) blur(18px);
-  border-bottom: 1px solid rgba(240, 161, 37, 0.08);
+  background: #0D0C0B; /* mismo tono que el hero → se funde, sin franja gris */
+  border-bottom: 1px solid transparent;
   font-family: 'Outfit', sans-serif;
-  transition: padding .3s ease, background .3s ease, box-shadow .3s ease, border-color .3s ease;
+  transition: padding .3s ease, background .3s ease, box-shadow .3s ease, border-color .3s ease, backdrop-filter .3s ease;
 }
 .nav--scrolled {
   padding-top: 11px; padding-bottom: 11px;
   background: rgba(13, 12, 11, 0.92);
+  backdrop-filter: saturate(180%) blur(18px);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.38);
   border-bottom-color: rgba(240, 161, 37, 0.16);
 }
@@ -84,6 +84,12 @@ img { max-width: 100%; }
   transition: transform .2s ease, box-shadow .25s ease;
 }
 .nav__cta:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(240, 161, 37, .48); opacity: 1; }
+.nav__login {
+  margin-left: 6px; color: #FAF9F5; text-decoration: none; font-weight: 700; font-size: 15px;
+  padding: 10px 18px; border-radius: 999px; border: 1.5px solid rgba(240, 161, 37, .45);
+  white-space: nowrap; transition: background .2s ease, border-color .2s ease;
+}
+.nav__login:hover { background: rgba(240, 161, 37, .12); border-color: #F0A125; opacity: 1; }
 
 /* Botón hamburguesa (oculto en desktop) */
 .nav__toggle { display: none; }
@@ -117,6 +123,7 @@ img { max-width: 100%; }
   .nav.open .nav__links { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0) scale(1); }
   .nav__link { padding: 14px 16px; font-size: 16px; }
   .nav__link[aria-current="page"] { background: rgba(240, 161, 37, .14); }
+  .nav__login { margin: 6px 0 0; text-align: center; padding: 14px; }
   .nav__cta { margin: 6px 0 0; text-align: center; padding: 15px; }
 }
 
@@ -207,6 +214,80 @@ details > summary:focus-visible { outline: 2px solid #F0A125; outline-offset: 2p
 
 /* ===== Tilt 3D (tarjetas) ===== */
 .reveal-grid > *, .tcard { transform-style: preserve-3d; }
+
+/* ===== Precios (tarjetas de planes) ===== */
+.pricing { max-width: 1120px; margin: 0 auto; width: 100%; }
+.pricing__toggle {
+  display: inline-flex; align-items: center; gap: 2px;
+  background: #17140F; border: 1px solid #2A251C; border-radius: 999px; padding: 4px;
+}
+.pricing__toggle button {
+  font-family: inherit; font-weight: 700; font-size: 14px; color: #B5AE9F;
+  background: none; border: 0; padding: 9px 18px; border-radius: 999px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: background .2s ease, color .2s ease;
+}
+.pricing__toggle button.is-active { background: #F0A125; color: #14120E; }
+.pricing__save {
+  font-size: 11px; font-weight: 800; letter-spacing: .3px;
+  background: rgba(240,161,37,.16); color: #F0A125; padding: 2px 8px; border-radius: 999px;
+}
+.pricing__toggle button.is-active .pricing__save { background: rgba(20,18,14,.18); color: #14120E; }
+
+.pgrid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+@media (min-width: 1000px) { .pgrid { grid-template-columns: repeat(3, 1fr); } }
+
+.pcard {
+  position: relative; display: flex; flex-direction: column; gap: 15px;
+  background: #17140F; border: 1px solid #2A251C; border-radius: 20px; padding: 26px 24px;
+  transition: transform .3s cubic-bezier(.22,.61,.36,1), border-color .3s ease, box-shadow .3s ease;
+}
+.pcard:hover { transform: translateY(-4px); border-color: #3A3227; }
+.pcard--featured {
+  border-color: rgba(240,161,37,.55);
+  background: linear-gradient(#1c1710, #17140F);
+  box-shadow: 0 0 0 1px rgba(240,161,37,.22), 0 28px 60px rgba(240,161,37,.13);
+}
+.pcard__badge {
+  position: absolute; top: -11px; left: 24px;
+  background: #F0A125; color: #14120E; font-size: 11px; font-weight: 800; letter-spacing: .5px;
+  padding: 4px 12px; border-radius: 999px; white-space: nowrap;
+}
+.pcard__name { font-weight: 800; font-size: 19px; color: #FAF9F5; }
+.pcard__price { line-height: 1; margin-top: 2px; }
+.pcard__amount { font-weight: 800; font-size: 34px; color: #FAF9F5; letter-spacing: -.02em; }
+.pcard__per { font-size: 14px; color: #8A8377; font-weight: 500; margin-left: 3px; }
+.pcard__note { font-size: 12.5px; color: #6B6459; min-height: 1.1em; }
+.pcard__fine { font-size: 11.5px; line-height: 1.45; color: #6B6459; margin-top: -4px; }
+.pcard__feats { list-style: none; margin: 6px 0 4px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.pcard__feats li { position: relative; padding-left: 24px; font-size: 13.5px; line-height: 1.5; color: #C7C0B2; }
+.pcard__feats li::before {
+  content: "✓"; position: absolute; left: 0; top: 0; color: #F0A125; font-weight: 800;
+}
+.pcard__cta {
+  margin-top: auto; text-align: center; font-weight: 700; font-size: 14.5px;
+  padding: 12px 18px; border-radius: 12px; text-decoration: none;
+  transition: transform .2s ease, opacity .2s ease;
+}
+.pcard__cta--primary { background: #F0A125; color: #14120E; }
+.pcard__cta--ghost { background: transparent; color: #FAF9F5; border: 1.5px solid #3A3227; }
+.pcard__cta:hover { transform: translateY(-1px); }
+
+/* Toggle mensual / anual (CSS-only, JS solo cambia la clase) */
+.pricing .py { display: none; }
+.pricing.is-annual .pm { display: none; }
+.pricing.is-annual .py { display: inline; }
+
+/* ===== Typewriter del hero ===== */
+.tw { color: #F0A125; }
+.tw__word { white-space: nowrap; }
+.tw__caret {
+  display: inline-block; width: 3px; height: 0.92em; margin-left: 5px;
+  background: #F0A125; border-radius: 2px; vertical-align: -0.08em;
+  animation: tw-blink 1s steps(1, end) infinite;
+}
+@keyframes tw-blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .tw__caret { animation: none; opacity: 1; } }
 
 /* ===== Testimonios (rediseño 3D) ===== */
 .tsection { background: #FAF9F5; padding: clamp(56px,8vw,96px) clamp(20px,5vw,48px); overflow: hidden; }

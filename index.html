@@ -30,7 +30,7 @@
 
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/outfit-latin.woff2" crossorigin>
   <link rel="preload" as="image" href="assets/img/hero-dashboard.webp" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/styles.css?v=ee42befc">
+  <link rel="stylesheet" href="assets/css/styles.css?v=66491e41">
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ENSAMBLA","url":"https://ensambla.vercel.app","logo":"https://ensambla.vercel.app/favicon.svg","email":"ensambla.app@gmail.com","areaServed":"SV","sameAs":[],"contactPoint":{"@type":"ContactPoint","contactType":"ventas","telephone":"+50374691631","availableLanguage":"es"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ENSAMBLA","applicationCategory":"BusinessApplication","operatingSystem":"iOS, Android, Web","description":"Canciones con acordes, setlists, calendario de eventos, disponibilidad, chat y metrónomo integrado. Todo tu equipo de música sincronizado, del ensayo al escenario. 14 días gratis.","url":"https://ensambla.vercel.app","offers":{"@type":"Offer","price":"4.99","priceCurrency":"USD","description":"Desde $4.99/mes, 14 días de prueba gratis"}}</script>
@@ -168,9 +168,25 @@
       <h2 style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(28px,4vw,40px); color: #FAF9F5; margin: 10px 0 0;">Modo en vivo + metrónomo integrado.</h2>
       <p style="font-family: 'Outfit'; font-size: 17px; color: #B5AE9F; margin-top: 12px;">Cada canción arranca sola con su tempo, compás y subdivisión correctos — sin salir del escenario.</p>
     </div>
-    <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
-      <img src="assets/img/modo-en-vivo-1.webp" alt="Modo en vivo con metrónomo integrado en ENSAMBLA" title="Modo en vivo con metrónomo integrado en ENSAMBLA" width="1329" height="999" loading="lazy" decoding="async" style="height: 440px; max-width: 100%; object-fit: contain; border-radius: 18px; box-shadow: 0 30px 70px rgba(0,0,0,0.5);;width:auto">
-      <img src="assets/img/modo-en-vivo-2.webp" alt="Pantalla de metrónomo y tempo del modo en vivo" title="Pantalla de metrónomo y tempo del modo en vivo" width="1335" height="994" loading="lazy" decoding="async" style="height: 440px; max-width: 100%; object-fit: contain; border-radius: 18px; box-shadow: 0 30px 70px rgba(0,0,0,0.5);;width:auto">
+    <div class="iselect" aria-label="Modo en vivo y metrónomo">
+      <div class="iselect__panel is-active" tabindex="0" role="button" aria-label="Modo en vivo" style="background-image: url('assets/img/modo-en-vivo-1.webp');">
+        <div class="iselect__label">
+          <span class="iselect__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M7.76 16.24a6 6 0 0 1 0-8.49M16.24 7.76a6 6 0 0 1 0 8.49M4.93 19.07a10 10 0 0 1 0-14.14M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span>
+          <span class="iselect__text">
+            <span class="iselect__title">Modo en vivo</span>
+            <span class="iselect__sub">Acordes y letra en pantalla, sin salir del escenario</span>
+          </span>
+        </div>
+      </div>
+      <div class="iselect__panel" tabindex="0" role="button" aria-label="Metrónomo integrado" style="background-image: url('assets/img/modo-en-vivo-2.webp');">
+        <div class="iselect__label">
+          <span class="iselect__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21h12"/><path d="M9.5 21 12 3.5 14.5 21"/><path d="M12 3.5 17 13"/></svg></span>
+          <span class="iselect__text">
+            <span class="iselect__title">Metrónomo integrado</span>
+            <span class="iselect__sub">Tempo, compás y subdivisión por canción</span>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -400,6 +416,6 @@
     setTimeout(hide, 4000);
   })();
 </script>
-<script src="assets/js/enhance.js?v=ee42befc" defer></script>
+<script src="assets/js/enhance.js?v=66491e41" defer></script>
 </body>
 </html>

@@ -164,6 +164,23 @@
     });
   });
 
+  /* ---------- Selector interactivo (modo en vivo) ---------- */
+  var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  Array.prototype.forEach.call(document.querySelectorAll('.iselect'), function (sel) {
+    var panels = sel.querySelectorAll('.iselect__panel');
+    function activate(p) {
+      Array.prototype.forEach.call(panels, function (x) { x.classList.toggle('is-active', x === p); });
+    }
+    Array.prototype.forEach.call(panels, function (p) {
+      p.addEventListener('click', function () { activate(p); });
+      p.addEventListener('focus', function () { activate(p); });
+      if (canHover) p.addEventListener('mouseenter', function () { activate(p); });
+      p.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(p); }
+      });
+    });
+  });
+
   /* ---------- Typewriter del hero ---------- */
   (function () {
     var tw = document.querySelector('.tw');

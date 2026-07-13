@@ -222,6 +222,58 @@ details > summary:focus-visible { outline: 2px solid #F0A125; outline-offset: 2p
 /* ===== Tilt 3D (tarjetas) ===== */
 .reveal-grid > *, .tcard { transform-style: preserve-3d; }
 
+/* ===== Selector interactivo (modo en vivo) ===== */
+.iselect {
+  display: flex; gap: 10px; width: 100%; max-width: 960px; height: clamp(360px, 52vw, 460px);
+}
+.iselect__panel {
+  position: relative; flex: 1 1 0%; min-width: 56px;
+  border-radius: 18px; overflow: hidden; cursor: pointer;
+  background-size: cover; background-position: center;
+  border: 2px solid #292929; background-color: #18181b;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  transition: flex .65s cubic-bezier(.22,.61,.36,1), border-color .4s ease, box-shadow .4s ease;
+}
+.iselect__panel.is-active {
+  flex: 3.4 1 0%;
+  border-color: rgba(240,161,37,.6);
+  box-shadow: 0 24px 60px rgba(0,0,0,.5);
+}
+.iselect__panel::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.25) 42%, transparent 72%);
+}
+.iselect__panel:focus-visible { outline: 3px solid #F0A125; outline-offset: 2px; }
+.iselect__label {
+  position: absolute; left: 0; right: 0; bottom: 18px; z-index: 2;
+  display: flex; align-items: center; gap: 12px; padding: 0 16px; pointer-events: none;
+}
+.iselect__icon {
+  width: 44px; height: 44px; flex: none; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; color: #F0A125;
+  background: rgba(20,18,14,.7); border: 2px solid rgba(240,161,37,.5);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.iselect__text { min-width: 0; overflow: hidden; }
+.iselect__title {
+  display: block; font-weight: 800; font-size: 18px; color: #FAF9F5; white-space: nowrap;
+  opacity: 0; transform: translateX(16px); transition: opacity .5s ease, transform .5s ease;
+}
+.iselect__sub {
+  display: block; font-size: 14px; color: #CFC8BA; white-space: nowrap;
+  opacity: 0; transform: translateX(16px); transition: opacity .5s ease .05s, transform .5s ease .05s;
+}
+.iselect__panel.is-active .iselect__title,
+.iselect__panel.is-active .iselect__sub { opacity: 1; transform: none; }
+@media (max-width: 640px) {
+  .iselect { flex-direction: column; height: auto; }
+  .iselect__panel { flex: none; height: 82px; }
+  .iselect__panel.is-active { height: clamp(280px, 62vw, 340px); flex: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .iselect__panel, .iselect__title, .iselect__sub { transition-duration: .001ms; }
+}
+
 /* ===== Precios (tarjetas de planes) ===== */
 .pricing { max-width: 1120px; margin: 0 auto; width: 100%; }
 .pricing__toggle {
@@ -347,11 +399,16 @@ details > summary:focus-visible { outline: 2px solid #F0A125; outline-offset: 2p
 /* Tablet: 2 columnas animadas */
 @media (max-width: 1023px) { .tcol--lg { display: none; } }
 
-/* Móvil: sin marquee — stack en bloque, ancho completo, tarjetas sólidas */
+/* Móvil: caja con scroll interno — ~3 tarjetas a la vista, el resto se desliza en el mismo lugar */
 @media (max-width: 719px) {
   .tmarquee {
-    display: block; margin: 0; max-width: none; max-height: none; overflow: visible;
-    -webkit-mask-image: none; mask-image: none;
+    display: block; margin: 0 auto; max-width: 460px;
+    height: 74vh; max-height: 640px; min-height: 420px;
+    overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch; padding: 6px 4px;
+    /* degradado sutil arriba/abajo que insinúa que hay más para deslizar */
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 6%, #000 94%, transparent);
+            mask-image: linear-gradient(to bottom, transparent, #000 6%, #000 94%, transparent);
   }
   .tcol { display: block; width: auto; max-width: none; margin: 0; }
   .tcol__track { display: block; animation: none; }
@@ -359,16 +416,17 @@ details > summary:focus-visible { outline: 2px solid #F0A125; outline-offset: 2p
     display: flex; width: auto; margin: 0 0 14px; padding: 22px 20px 20px;
     background: #FFFFFF; border: 1px solid #EBE3D4;
   }
-  .tq--dup { display: none; } /* oculta las copias del loop de desktop */
-  /* Solo 2 por columna (6 en total) para que el scroll no sea eterno */
-  .tcol__track > .tq:nth-child(n+3) { display: none; }
+  .tq--dup { display: none; } /* oculta las copias del loop de desktop; se ven los 12 reales */
 }
 
 @media (prefers-reduced-motion: reduce) {
   .tcol__track { animation: none; }
+  .tq--dup { display: none; }
+}
+/* solo en desktop se expande a lo alto; en móvil se conserva la caja con scroll */
+@media (prefers-reduced-motion: reduce) and (min-width: 720px) {
   .tmarquee { max-height: none; overflow: visible;
     -webkit-mask-image: none; mask-image: none; }
-  .tq--dup { display: none; }
 }
 
 /* ===== Bento grid (Funcionalidades) ===== */

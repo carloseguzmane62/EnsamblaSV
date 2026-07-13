@@ -318,6 +318,11 @@ details > summary:focus-visible { outline: 2px solid #F0A125; outline-offset: 2p
 .pcard__per { font-size: 14px; color: #8A8377; font-weight: 500; margin-left: 3px; }
 .pcard__note { font-size: 12.5px; color: #6B6459; min-height: 1.1em; }
 .pcard__fine { font-size: 11.5px; line-height: 1.45; color: #6B6459; margin-top: -4px; }
+.feat-new {
+  display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .5px;
+  color: #14120E; background: #F0A125; padding: 1px 7px; border-radius: 999px;
+  margin-left: 5px; vertical-align: middle;
+}
 .pcard__feats { list-style: none; margin: 6px 0 4px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .pcard__feats li { position: relative; padding-left: 24px; font-size: 13.5px; line-height: 1.5; color: #C7C0B2; }
 .pcard__feats li::before {

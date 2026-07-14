@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><style>
+  @font-face { font-family:'Outfit'; font-weight:100 900; font-display:block; src:url('../assets/fonts/outfit-latin.woff2') format('woff2'); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1080px; height:1080px; font-family:'Outfit',sans-serif; color:#FAF9F5; background:#0D0C0B; position:relative; overflow:hidden; -webkit-font-smoothing:antialiased; }
+  .orb { position:absolute; border-radius:50%; filter:blur(80px); }
+  .orb--a { width:520px; height:520px; top:-190px; right:-150px; background:radial-gradient(circle,rgba(240,161,37,.24),transparent 70%); }
+  .orb--b { width:480px; height:480px; bottom:-180px; left:-170px; background:radial-gradient(circle,rgba(201,130,29,.18),transparent 70%); }
+  .wrap { position:relative; z-index:1; height:100%; padding:56px 60px; display:flex; flex-direction:column; align-items:center; }
+  .logo { height:50px; }
+  .eyebrow { margin-top:24px; font-weight:700; font-size:15px; letter-spacing:3.5px; color:#F0A125; text-align:center; }
+  h1 { margin-top:14px; font-weight:800; font-size:52px; line-height:1.08; letter-spacing:-.02em; text-align:center; text-wrap:balance; max-width:840px; }
+  h1 .d { color:#F0A125; }
+  .sub { margin-top:14px; font-size:20px; color:#C7C0B2; text-align:center; }
+  .grid { margin-top:30px; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .it { display:flex; align-items:center; gap:13px; background:#17140F; border:1px solid #2A251C; border-radius:15px; padding:16px 18px; }
+  .it__ic { width:42px; height:42px; flex:none; border-radius:11px; background:rgba(240,161,37,.12); border:1px solid rgba(240,161,37,.35); display:flex; align-items:center; justify-content:center; color:#F0A125; }
+  .it__t { font-weight:700; font-size:19px; }
+  .trial { margin-top:26px; width:100%; text-align:center; background:linear-gradient(135deg,#F7B23E,#E0890B); color:#14120E; border-radius:18px; padding:20px; }
+  .trial b { font-weight:800; font-size:34px; }
+  .trial .s { font-size:17px; font-weight:600; opacity:.9; margin-top:4px; }
+  .foot { margin-top:auto; width:100%; display:flex; align-items:center; gap:22px; }
+  .qr { width:132px; height:132px; flex:none; background:#fff; border-radius:13px; padding:9px; }
+  .qr img { width:100%; height:100%; display:block; }
+  .foot__u { font-weight:800; font-size:26px; color:#F0A125; }
+  .foot__c { margin-top:6px; font-size:17px; color:#CFC8BA; line-height:1.5; }
+  .foot__c b { color:#FAF9F5; font-weight:600; }
+</style></head>
+<body>
+  <div class="orb orb--a"></div><div class="orb orb--b"></div>
+  <div class="wrap">
+    <img class="logo" src="../assets/brand/logo-completo-oscuro.png" alt="ENSAMBLA">
+    <div class="eyebrow">PARA IGLESIAS Y MINISTERIOS DE ALABANZA</div>
+    <h1>Organiza tu iglesia y sirve con excelencia<span class="d">.</span></h1>
+    <div class="sub">Alabanza · Limpieza · Cafetería · Diáconos y servidores, en un solo lugar.</div>
+    <div class="grid">
+      <div class="it"><div class="it__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.4-8 12-8 12s-8-7.6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="it__t">Mapa de tu iglesia</div></div>
+      <div class="it"><div class="it__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div><div class="it__t">Recordatorios auto.</div></div>
+      <div class="it"><div class="it__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21h12"/><path d="M9.5 21 12 3.5 14.5 21"/><path d="M12 3.5 17 13"/></svg></div><div class="it__t">Modo en vivo + metrónomo</div></div>
+      <div class="it"><div class="it__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><div class="it__t">Cancionero + setlists</div></div>
+      <div class="it"><div class="it__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z"/></svg></div><div class="it__t">Inteligencia artificial</div></div>
+      <div class="it"><div class="it__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></div><div class="it__t">Chat y calendario</div></div>
+    </div>
+    <div class="trial"><b>Pruébalo GRATIS 14 días</b><div class="s">Sin tarjeta · celular, tablet y PC. Regístrate e invita a tu equipo.</div></div>
+    <div class="foot">
+      <div class="qr"><img src="qr-ensambla.png" alt="QR"></div>
+      <div>
+        <div class="foot__u">www.ensambla.app</div>
+        <div class="foot__c"><b>WhatsApp +503 7469 1631</b> · @ensamblaapp<br>¿Dudas? Llamada gratis con nuestro equipo.</div>
+      </div>
+    </div>
+  </div>
+</body></html>

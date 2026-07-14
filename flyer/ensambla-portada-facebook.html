@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><style>
+  @font-face { font-family:'Outfit'; font-weight:100 900; font-display:block; src:url('../assets/fonts/outfit-latin.woff2') format('woff2'); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1640px; height:624px; font-family:'Outfit',sans-serif; color:#FAF9F5; background:#0D0C0B; position:relative; overflow:hidden; -webkit-font-smoothing:antialiased; }
+  .orb { position:absolute; border-radius:50%; filter:blur(90px); }
+  .orb--a { width:620px; height:620px; top:-320px; right:120px; background:radial-gradient(circle,rgba(240,161,37,.22),transparent 70%); }
+  .orb--b { width:520px; height:520px; bottom:-320px; left:60px; background:radial-gradient(circle,rgba(201,130,29,.16),transparent 70%); }
+  .grain { position:absolute; inset:0; background:
+    radial-gradient(circle at 20% 30%, rgba(240,161,37,.05), transparent 40%),
+    radial-gradient(circle at 85% 70%, rgba(240,161,37,.05), transparent 40%); }
+  .wrap { position:relative; z-index:1; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 60px; }
+  .logo { height:58px; }
+  .eyebrow { margin-top:22px; font-weight:700; font-size:16px; letter-spacing:4px; color:#F0A125; }
+  h1 { margin-top:12px; font-weight:800; font-size:58px; line-height:1.05; letter-spacing:-.02em; text-wrap:balance; max-width:1150px; }
+  h1 .d { color:#F0A125; }
+  .chips { margin-top:22px; display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+  .chip { font-size:18px; font-weight:600; color:#FAF9F5; background:rgba(240,161,37,.10); border:1px solid rgba(240,161,37,.30); padding:8px 18px; border-radius:999px; }
+  .bottom { margin-top:24px; display:flex; align-items:center; gap:18px; font-size:22px; font-weight:700; }
+  .pill { background:linear-gradient(135deg,#F7B23E,#E0890B); color:#14120E; padding:11px 22px; border-radius:999px; font-weight:800; }
+  .url { color:#F0A125; }
+  .sep { color:#4A453B; }
+</style></head>
+<body>
+  <div class="orb orb--a"></div><div class="orb orb--b"></div><div class="grain"></div>
+  <div class="wrap">
+    <img class="logo" src="../assets/brand/logo-completo-oscuro.png" alt="ENSAMBLA">
+    <div class="eyebrow">PARA IGLESIAS Y MINISTERIOS DE ALABANZA</div>
+    <h1>Organiza tu iglesia y sirve con excelencia<span class="d">.</span></h1>
+    <div class="chips">
+      <span class="chip">Mapa de tu iglesia</span>
+      <span class="chip">Recordatorios</span>
+      <span class="chip">Modo en vivo + metrónomo</span>
+      <span class="chip">Cancionero + setlists</span>
+      <span class="chip">Inteligencia artificial</span>
+      <span class="chip">Chat y calendario</span>
+    </div>
+    <div class="bottom">
+      <span class="pill">GRATIS 14 días · sin tarjeta</span>
+      <span class="sep">|</span>
+      <span class="url">www.ensambla.app</span>
+    </div>
+  </div>
+</body></html>

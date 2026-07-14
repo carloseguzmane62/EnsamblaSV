@@ -58,7 +58,7 @@ function NAV(active) {
     </nav>
     <div class="nav__actions">
       <a class="nav__login" href="https://studio.ensambla.app" title="Iniciar sesión en ENSAMBLA">Iniciar sesión</a>
-      <a class="nav__cta" href="${WA}?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20ENSAMBLA" target="_blank" rel="noopener" title="Agendar demo por WhatsApp">Agendar demo</a>
+      <a class="nav__cta" href="index.html#demo" title="Agendar una demo gratis">Agendar demo</a>
     </div>
   </div>
 </header>`;

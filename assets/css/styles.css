@@ -343,7 +343,8 @@ details > summary:focus-visible { outline: 2px solid #F0A125; outline-offset: 2p
 .pricing.is-annual .py { display: inline; }
 
 /* ===== Typewriter del hero ===== */
-.tw { color: #F0A125; }
+/* ponytail: palabra en su propia línea y alto fijo → el cambio de palabra no altera el alto del hero ni mueve el scroll */
+.tw { color: #F0A125; display: block; min-height: 1.15em; }
 .tw__word { white-space: nowrap; }
 .tw__caret {
   display: inline-block; width: 3px; height: 0.92em; margin-left: 5px;
